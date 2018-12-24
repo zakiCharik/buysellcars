@@ -7,13 +7,13 @@
     "files": {}
   },
   "installed_plugins": {
+    "cordova-call": {
+      "PACKAGE_NAME": "com.buyintube.rim"
+    },
     "cordova-plugin-battery-status": {
       "PACKAGE_NAME": "com.buyintube.rim"
     },
     "cordova-plugin-camera": {
-      "PACKAGE_NAME": "com.buyintube.rim"
-    },
-    "cordova-plugin-media-capture": {
       "PACKAGE_NAME": "com.buyintube.rim"
     },
     "cordova-plugin-device": {
@@ -31,13 +31,13 @@
     "cordova-plugin-inappbrowser": {
       "PACKAGE_NAME": "com.buyintube.rim"
     },
+    "cordova-plugin-media-capture": {
+      "PACKAGE_NAME": "com.buyintube.rim"
+    },
     "cordova-plugin-network-information": {
       "PACKAGE_NAME": "com.buyintube.rim"
     },
     "cordova-plugin-vibration": {
-      "PACKAGE_NAME": "com.buyintube.rim"
-    },
-    "cordova-call": {
       "PACKAGE_NAME": "com.buyintube.rim"
     }
   },

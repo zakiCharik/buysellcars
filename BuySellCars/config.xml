@@ -111,5 +111,4 @@
         <allow-intent href="itms-apps:*" />
     </platform>
     <engine name="android" spec="~7.1.4" />
-    <plugin name="cordova-call" spec="^1.1.6" />
 </widget>
