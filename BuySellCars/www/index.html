@@ -11,7 +11,7 @@
       * Disables use of inline scripts in order to mitigate risk of XSS vulnerabilities. To change this:
           * Enable inline JS: add 'unsafe-inline' to default-src
   -->
-  <meta http-equiv="Content-Security-Policy" content="default-src * gap://ready 'self' 'unsafe-inline' 'unsafe-eval' data: gap: content:">
+  <meta http-equiv="Content-Security-Policy" content="default-src * gap://ready 'self' 'unsafe-inline' 'unsafe-eval' data: gap: content: blob:">
 
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui, viewport-fit=cover">
 
@@ -65,7 +65,7 @@
   </style>
   <link rel="stylesheet" href="https://unpkg.com/video.js/dist/video-js.min.css">
   <script src="//unpkg.com/video.js/dist/video.min.js"></script>
-  <script src="//src.litix.io/videojs/2/videojs-mux.js"></script>
+  <script src="//src.litix.io/videojs/2.1.0/videojs-mux.js"></script>
 </head>
 <body>
   <div id="app" class="framework7-root">
