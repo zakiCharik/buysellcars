@@ -1,0 +1,13 @@
+{
+  "name": "com.buyintube.rim",
+  "version": "1.0.0",
+  "displayName": "Buy Sell Your Car",
+  "cordova": {
+    "platforms": [
+      "android"
+    ]
+  },
+  "dependencies": {
+    "cordova-android": "~7.1.4"
+  }
+}

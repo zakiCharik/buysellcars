@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <!--
+  Customize this policy to fit your own app's needs. For more guidance, see:
+      https://github.com/apache/cordova-plugin-whitelist/blob/master/README.md#content-security-policy
+  Some notes:
+      * gap: is required only on iOS (when using UIWebView) and is needed for JS->native communication
+      * https://ssl.gstatic.com is required only on Android and is needed for TalkBack to function properly
+      * Disables use of inline scripts in order to mitigate risk of XSS vulnerabilities. To change this:
+          * Enable inline JS: add 'unsafe-inline' to default-src
+  -->
+  <meta http-equiv="Content-Security-Policy" content="default-src * 'self' 'unsafe-inline' 'unsafe-eval' data: gap: content:">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui, viewport-fit=cover">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="theme-color" content="#2196f3">
+  <meta name="format-detection" content="telephone=no">
+  <meta name="msapplication-tap-highlight" content="no">
+  <title>My App</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mediaelement/4.2.6/mediaelementplayer.css">
+  <link rel="stylesheet" href="framework7/css/framework7.min.css">
+  <link rel="stylesheet" href="css/icons.css">
+  <link rel="stylesheet" href="css/app.css">
+  <link rel="stylesheet" href="css/airplay.css">
+  <style type="text/css">
+    ul {
+      list-style: none;
+    }
+    .row.gp-btns a{
+      background: #505050;
+      border: 1px solid #505050;
+      line-height: 0px !important; 
+      width: 40px; 
+      height: 40px !important; 
+      padding: 7px;      
+      margin-bottom: 5px;
+      text-overflow: unset;
+    }
+    .gp-btns{
+      float: right;
+      display: inline;
+      position: absolute;
+      top: 0px;
+      right: 0px;
+      padding: 5px;
+      color: black;
+    }
+    .ios .fab-buttons a, .ios .fab>a {
+      background: transparent;
+      color: black;
+    }
+    .card {
+      margin-bottom: 6px !important;
+      margin-left: 1px !important;
+      margin-right: 1px !important;
+    }
+  </style>
+</head>
+<body>
+  <div id="app" class="framework7-root">
+    <!-- Status bar overlay for fullscreen mode-->
+    <div class="statusbar"></div>
+    <!-- Left panel with reveal effect when hidden -->
+    <div class="panel panel-left panel-reveal">
+      <div class="view view-left">
+        <div class="page">
+          <div class="navbar">
+            <div class="navbar-inner sliding">
+              <div class="title">Left Panel</div>
+            </div>
+          </div>
+          <div class="page-content">
+            <div class="block-title">Left View Navigation</div>
+            <div class="list links-list">
+              <ul>
+                <li><a href="/left-page-1/">Left Page 1</a></li>
+                <li><a href="/left-page-2/">Left Page 2</a></li>
+              </ul>
+            </div>
+            <div class="block-title">Control Main View</div>
+            <div class="list links-list">
+              <ul>
+                <li>
+                  <a href="/about/" data-view=".view-main" class="panel-close">About</a>
+                </li>
+                <li>
+                  <a href="/form/" data-view=".view-main" class="panel-close">Form</a>
+                </li>
+                <li>
+                  <a href="#" data-view=".view-main" class="back">Back in history</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Right panel with cover effect -->
+    <div class="panel panel-right panel-cover theme-dark">
+      <div class="view">
+        <div class="page">
+          <div class="navbar">
+            <div class="navbar-inner">
+              <div class="title">Right Panel</div>
+            </div>
+          </div>
+          <div class="page-content">
+            <div class="block">Right panel content goes here</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Your main view, should have "view-main" class -->
+    <div class="view view-main ios-edges">
+      <!-- Page, data-name contains page name which can be used in callbacks -->
+      <div class="page" data-name="home">
+        <!-- Top Navbar -->
+        <div class="navbar">
+          <div class="navbar-inner">
+            <div class="left">
+              <a href="#" class="link icon-only panel-open" data-panel="left">
+                <i class="icon f7-icons ios-only">menu</i>
+                <i class="icon material-icons md-only">menu</i>
+              </a>
+            </div>
+            <div class="title sliding">
+              Logo
+              <span class="subtitle">App Name</span>
+            </div>
+            <div class="right">
+              <a href="#" class="link icon-only" data-panel="">
+                <i class="icon f7-icons ios-only">person_fill</i>
+                <i class="icon material-icons md-only">person_fill</i>
+              </a>
+              <a href="#" class="link icon-only panel-open" data-panel="right">
+                <i class="icon f7-icons ios-only">search</i>
+                <i class="icon material-icons md-only">search</i>
+              </a>
+            </div>
+          </div>
+        </div>
+        <!-- Toolbar-->
+        <div class="subnavbar sliding" aria-hidden="true">
+          <div class="subnavbar-inner">
+            <div class="segmented segmented-raised">
+            <button class="button" style="border: none;"><i class="icon f7-icons ">home</i> </button>
+            <button class="button" style="border: none;"><i class="material-icons">add_location</i></button>
+            <button class="button" style="border: none;"><i class="icon f7-icons ">heart</i></button>
+            <button class="button" style="border: none;"><i class="icon f7-icons ">start</i></button>
+            <button class="button" style="border: none;"><i class="icon f7-icons ">chat</i></button>
+            </div>
+          </div>          
+          <!-- Toolbar-->
+          <div class="subnavbar ">
+            <div class="subnavbar-inner ">
+              <div class="segmented segmented-raised row">
+                <button class="button col-60" style="border: none;"> <span id="your_location" style="font-size: 11px;text-align: left;"><i class="material-icons" style="font-size: 12px;">map</i> Berrechid, Grande Casablanca</span></button>
+                <button class="button col-20" style="border: none;"><i class="material-icons">attach_money</i></button>
+                <button class="button col-20" style="border: none;"><i class="material-icons">av_timer</i></button>
+              </div>
+            </div>          
+
+          </div>
+        </div>
+
+        <!-- Scrollable page content-->
+        <div class="page-content" style="margin-top: 15px;">
+            <div class="block">
+              <!-- Advertising content-->
+              <div class="card demo-facebook-card">
+                <div class="card-content"> 
+                  <div class="video-container"  width="100%" height="auto" >
+<!--                     <video width="100%" height="auto"  style="">
+                      <source src="https://www.youtube.com/embed/wyVM1evRxNw?modestbranding=1&autohide=1&showinfo=0&controls=0" type="text/html">
+                      Your browser does not support the video tag.
+                    </video> -->
+
+                    <video class="video-container video-stream"  width="100%" height="auto" id="player1" preload="">
+                        <source type="video/youtube" src="http://www.youtube.com/watch?v=nOEw9iiopwI" />
+                    </video>
+
+
+
+                    <div class="">
+                       <div class="row gp-btns" >
+                        <a href="" class="button button-raised button-round" style="color: orange">
+                          <i class="material-icons">star</i>
+                        </a>
+                        <a href="" class="button button-raised button-round" style="color: red">
+                          <i class="material-icons">favorite</i>
+                        </a>
+                        <a href="tel:00212663154995" class="external button button-raised button-round" style="color: green">
+                          <i class="material-icons">local_phone</i>
+                        </a>
+                      </div>
+                      <a href="" class="button button-raised button-round" style="border: none; color: white; position: absolute;left: 0px;bottom: 10px;">
+                        <i class="material-icons">fullscreen</i>
+                      </a>
+
+                    </div>
+                  </div>
+                </div>
+                <div class="card-header">
+                    <div class="chip">
+                        <div class="chip-media"><img src="http://lorempixel.com/100/100/people/9/"></div>
+                        <div class="chip-label">Jane Doe</div>
+                    </div>                  
+                  <div class="demo-facebook-name clicked-ad link">NISAN XX</div>                
+                </div>
+                <div class="card-header" style="font-size: 14px; text-align: left;">
+                  <i class="material-icons">person_pin_circle</i> <div class="demo-facebook-date">Berrechid</div>
+                  <div class="demo-facebook-date">Today 3:47 PM</div>
+                  <div class="demo-facebook-name" style="font-size: 17px;font-weight: bold;">100 000 DHS</div>
+                </div>
+                <div class="card-content content-ad" style="display: none;"> 
+                  <div class="row">
+                    <ul class="">
+                      <li class="">Marque : xx</li>
+                      <li class="">Modèle : xx</li>
+                      <li class="">Kilométrage : .00 KM</li>
+                      <li class="">Année : xxxx</li>
+                      <li class="">Puissance fiscal : .00 CH</li>
+                      <li class="">Transmission : Auto/Manuelle</li>
+                      <li class="">Coût Vignette : .00 DHS</li>
+                      <li class="">Année Déoune : Diesel</li>
+                      <li class="">Carburant : Diesel</li>
+                      <li class="">Carburant : Diesel</li>
+                      <li class="">Carburant : Diesel</li>
+                      <li class="">Carburant : Diesel</li>
+                      <li class="">Carburant : Diesel</li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="card-footer">
+                    <div class="">Carburant</div>
+                    <i class="material-icons">av_timer</i><div class="">KM</div>
+                    <div class="">.00 CH</div>
+                </div>
+              </div>
+              <!-- Advertising content-->
+              <div class="card demo-facebook-card">
+                <div class="card-content"> 
+                  <div class="video-container"  width="100%" height="auto" >
+                    <video width="100%" height="auto"  style="background-color: grey;">
+                      <source src="" type="video/mp4">
+                      Your browser does not support the video tag.
+                    </video>
+                    <div class="">
+                       <div class="row gp-btns" >
+                        <a href="" class="button button-raised button-round" style="color: orange">
+                          <i class="material-icons">star</i>
+                        </a>
+                        <a href="" class="button button-raised button-round" style="color: red">
+                          <i class="material-icons">favorite</i>
+                        </a>
+                        <a href="tel:00212661647460" class="external button button-raised button-round" style="color: green">
+                          <i class="material-icons">local_phone</i>
+                        </a>
+                      </div>
+                      <a href="" class="button button-raised button-round" style="border: none; color: white; position: absolute;left: 0px;bottom: 10px;">
+                        <i class="material-icons">fullscreen</i>
+                      </a>
+
+                    </div>
+                  </div>
+                </div>
+                <div class="card-header">
+                  <div class="chip">
+                    <div class="chip-media"><img src="http://lorempixel.com/100/100/people/3/"></div>
+                    <div class="chip-label">John Doe</div>
+                  </div>                  
+                  <div class="demo-facebook-name clicked-ad link">NISAN XX</div>                
+                </div>
+                <div class="card-header" style="font-size: 14px; text-align: left;">
+                  <i class="material-icons">person_pin_circle</i> <div class="demo-facebook-date">Berrechid</div>
+                  <div class="demo-facebook-date">Today 3:47 PM</div>
+                  <div class="demo-facebook-name" style="font-size: 17px;font-weight: bold;">100 000 DHS</div>
+                </div>
+                <div class="card-content content-ad" style="display: none;"> 
+                  <div class="row">
+                    <ul class="">
+                      <li class="">Marque : xx</li>
+                      <li class="">Modèle : xx</li>
+                      <li class="">Kilométrage : .00 KM</li>
+                      <li class="">Année : xxxx</li>
+                      <li class="">Puissance fiscal : .00 CH</li>
+                      <li class="">Transmission : Auto/Manuelle</li>
+                      <li class="">Coût Vignette : .00 DHS</li>
+                      <li class="">Année Déoune : Diesel</li>
+                      <li class="">Carburant : Diesel</li>
+                      <li class="">Carburant : Diesel</li>
+                      <li class="">Carburant : Diesel</li>
+                      <li class="">Carburant : Diesel</li>
+                      <li class="">Carburant : Diesel</li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="card-footer">
+                    <div class="">Carburant</div>
+                    <i class="material-icons">av_timer</i><div class="">KM</div>
+                    <div class="">.00 CH</div>
+                </div>
+              </div>
+              <!-- Advertising content-->
+              <div class="card demo-facebook-card">
+                <div class="card-content"> 
+                  <div class="video-container"  width="100%" height="auto" >
+                    <video width="100%" height="auto"  style="background-color: grey;">
+                      <source src="" type="video/mp4">
+                      Your browser does not support the video tag.
+                    </video>
+                    <div class="">
+                       <div class="row gp-btns" >
+                        <a href="" class="button button-raised button-round" style="color: orange">
+                          <i class="material-icons">star</i>
+                        </a>
+                        <a href="" class="button button-raised button-round" style="color: red">
+                          <i class="material-icons">favorite</i>
+                        </a>
+                        <a href="" class="button button-raised button-round" style="color: green">
+                          <i class="material-icons">local_phone</i>
+                        </a>
+                      </div>
+                      <a href="" class="button button-raised button-round" style="border: none; color: white; position: absolute;left: 0px;bottom: 10px;">
+                        <i class="material-icons">fullscreen</i>
+                      </a>
+
+                    </div>
+                  </div>
+                </div>
+                <div class="card-header">
+                  <div class="demo-facebook-name clicked-ad link">NISAN XX</div>                
+                </div>
+                <div class="card-header" style="font-size: 14px; text-align: left;">
+                  <i class="material-icons">person_pin_circle</i> <div class="demo-facebook-date">Berrechid</div>
+                  <div class="demo-facebook-date">Today 3:47 PM</div>
+                  <div class="demo-facebook-name" style="font-size: 17px;font-weight: bold;">100 000 DHS</div>
+                </div>
+                <div class="card-content content-ad" style="display: none;"> 
+                  <div class="row">
+                    <ul class="">
+                      <li class="">Marque : xx</li>
+                      <li class="">Modèle : xx</li>
+                      <li class="">Kilométrage : .00 KM</li>
+                      <li class="">Année : xxxx</li>
+                      <li class="">Puissance fiscal : .00 CH</li>
+                      <li class="">Transmission : Auto/Manuelle</li>
+                      <li class="">Coût Vignette : .00 DHS</li>
+                      <li class="">Année Déoune : Diesel</li>
+                      <li class="">Carburant : Diesel</li>
+                      <li class="">Carburant : Diesel</li>
+                      <li class="">Carburant : Diesel</li>
+                      <li class="">Carburant : Diesel</li>
+                      <li class="">Carburant : Diesel</li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="card-footer">
+                    <div class="">Carburant</div>
+                    <i class="material-icons">av_timer</i><div class="">KM</div>
+                    <div class="">.00 CH</div>
+                </div>
+              </div>
+              <!-- Advertising content-->
+              <div class="card demo-facebook-card">
+                <div class="card-content"> 
+                  <div class="video-container"  width="100%" height="auto" >
+                    <video width="100%" height="auto"  style="background-color: grey;">
+                      <source src="" type="video/mp4">
+                      Your browser does not support the video tag.
+                    </video>
+                    <div class="">
+                       <div class="row gp-btns" >
+                        <a href="" class="button button-raised button-round" style="color: orange">
+                          <i class="material-icons">star</i>
+                        </a>
+                        <a href="" class="button button-raised button-round" style="color: red">
+                          <i class="material-icons">favorite</i>
+                        </a>
+                        <a href="" class="button button-raised button-round" style="color: green">
+                          <i class="material-icons">local_phone</i>
+                        </a>
+                      </div>
+                      <a href="" class="button button-raised button-round" style="border: none; color: white; position: absolute;left: 0px;bottom: 10px;">
+                        <i class="material-icons">fullscreen</i>
+                      </a>
+
+                    </div>
+                  </div>
+                </div>
+                <div class="card-header">
+                  <div class="demo-facebook-name clicked-ad link">NISAN XX</div>                
+                </div>
+                <div class="card-header" style="font-size: 14px; text-align: left;">
+                  <i class="material-icons">person_pin_circle</i> <div class="demo-facebook-date">Berrechid</div>
+                  <div class="demo-facebook-date">Today 3:47 PM</div>
+                  <div class="demo-facebook-name" style="font-size: 17px;font-weight: bold;">100 000 DHS</div>
+                </div>
+                <div class="card-content content-ad" style="display: none;"> 
+                  <div class="row">
+                    <ul class="">
+                      <li class="">Marque : xx</li>
+                      <li class="">Modèle : xx</li>
+                      <li class="">Kilométrage : .00 KM</li>
+                      <li class="">Année : xxxx</li>
+                      <li class="">Puissance fiscal : .00 CH</li>
+                      <li class="">Transmission : Auto/Manuelle</li>
+                      <li class="">Coût Vignette : .00 DHS</li>
+                      <li class="">Année Déoune : Diesel</li>
+                      <li class="">Carburant : Diesel</li>
+                      <li class="">Carburant : Diesel</li>
+                      <li class="">Carburant : Diesel</li>
+                      <li class="">Carburant : Diesel</li>
+                      <li class="">Carburant : Diesel</li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="card-footer">
+                    <div class="">Carburant</div>
+                    <i class="material-icons">av_timer</i><div class="">KM</div>
+                    <div class="">.00 CH</div>
+                </div>
+              </div>
+              <!-- Advertising content-->
+              <div class="card demo-facebook-card">
+                <div class="card-content"> 
+                  <div class="video-container"  width="100%" height="auto" >
+                    <video width="100%" height="auto"  style="background-color: grey;">
+                      <source src="" type="video/mp4">
+                      Your browser does not support the video tag.
+                    </video>
+                    <div class="">
+                       <div class="row gp-btns" >
+                        <a href="" class="button button-raised button-round" style="color: orange">
+                          <i class="material-icons">star</i>
+                        </a>
+                        <a href="" class="button button-raised button-round" style="color: red">
+                          <i class="material-icons">favorite</i>
+                        </a>
+                        <a href="" class="button button-raised button-round" style="color: green">
+                          <i class="material-icons">local_phone</i>
+                        </a>
+                      </div>
+                      <a href="" class="button button-raised button-round" style="border: none; color: white; position: absolute;left: 0px;bottom: 10px;">
+                        <i class="material-icons">fullscreen</i>
+                      </a>
+
+                    </div>
+                  </div>
+                </div>
+                <div class="card-header">
+                  <div class="demo-facebook-name clicked-ad link">NISAN XX</div>                
+                </div>
+                <div class="card-header" style="font-size: 14px; text-align: left;">
+                  <i class="material-icons">person_pin_circle</i> <div class="demo-facebook-date">Berrechid</div>
+                  <div class="demo-facebook-date">Today 3:47 PM</div>
+                  <div class="demo-facebook-name" style="font-size: 17px;font-weight: bold;">100 000 DHS</div>
+                </div>
+                <div class="card-content content-ad" style="display: none;"> 
+                  <div class="row">
+                    <ul class="">
+                      <li class="">Marque : xx</li>
+                      <li class="">Modèle : xx</li>
+                      <li class="">Kilométrage : .00 KM</li>
+                      <li class="">Année : xxxx</li>
+                      <li class="">Puissance fiscal : .00 CH</li>
+                      <li class="">Transmission : Auto/Manuelle</li>
+                      <li class="">Coût Vignette : .00 DHS</li>
+                      <li class="">Année Déoune : Diesel</li>
+                      <li class="">Carburant : Diesel</li>
+                      <li class="">Carburant : Diesel</li>
+                      <li class="">Carburant : Diesel</li>
+                      <li class="">Carburant : Diesel</li>
+                      <li class="">Carburant : Diesel</li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="card-footer">
+                    <div class="">Carburant</div>
+                    <i class="material-icons">av_timer</i><div class="">KM</div>
+                    <div class="">.00 CH</div>
+                </div>
+              </div>
+
+
+            </div>
+          
+            <!-- Action save video -->
+            <div class="fab fab-extended fab-center-bottom" style="position: fixed;bottom: 10px; z-index: 10;">
+              <a href="#" class="">
+                <i class="icon f7-icons ios-only">videocam_round_fill</i>
+                <div class="fab-text">Save</div>
+              </a>
+            </div>            
+            <!-- Action save video -->
+
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+  <!-- Cordova -->
+  <!--
+  <script src="cordova.js"></script>
+  -->
+
+  <!-- Corodova library -->
+  <script type="text/javascript" src="cordova.js"></script>
+
+
+  <!-- Framework7 library -->
+  <script src="framework7/js/framework7.min.js"></script>
+
+  <!-- App routes -->
+  <script src="js/routes.js"></script>
+
+  <!-- Your custom app scripts -->
+  <script src="js/app.js"></script>
+
+  <!-- YOUTUBE API -->
+  <script src="https://www.youtube.com/iframe_api"></script>
+  
+  <!-- JQUERY  -->
+  <script
+  src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mediaelement/4.2.6/mediaelement-and-player.min.js"></script>
+  <script src="js/airplay.js"></script>
+
+
+  <script type="text/javascript">
+    // onSuccess Callback
+    // This method accepts a Position object, which contains the
+    // current GPS coordinates
+    //
+    var onSuccess = function(position) {
+        console.log('Latitude: '          + position.coords.latitude          + '\n' +
+              'Longitude: '         + position.coords.longitude         + '\n' +
+              'Altitude: '          + position.coords.altitude          + '\n' +
+              'Accuracy: '          + position.coords.accuracy          + '\n' +
+              'Altitude Accuracy: ' + position.coords.altitudeAccuracy  + '\n' +
+              'Heading: '           + position.coords.heading           + '\n' +
+              'Speed: '             + position.coords.speed             + '\n' +
+              'Timestamp: '         + position.timestamp                + '\n');
+    };
+
+    // onError Callback receives a PositionError object
+    //
+    function onError(error) {
+        alert('code: '    + error.code    + '\n' +
+              'message: ' + error.message + '\n');
+    }
+
+    navigator.geolocation.getCurrentPosition(onSuccess, onError);
+
+
+      $('.clicked-ad').on('click',function(){
+        var panel = $(this).parent().next().next();
+        if(!$(panel).is(':visible')){
+          $(panel).show();
+        }else{
+          $(panel).hide();
+        }
+      });
+      $(document).ready(function($) {
+
+          // declare object for video
+          var player = new MediaElementPlayer('#player1');
+
+      });
+
+  </script>
+</body>
+</html>
