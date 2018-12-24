@@ -605,74 +605,84 @@
 
 
   <script type="text/javascript">
-      document.addEventListener('deviceready', function() {
-
-        var permissions = cordova.plugins.permissions;
-        permissions.requestPermission(permissions.CAMERA, success, error);
-
-        function error() {
-          alert('Camera permission is not turned on');
-        }
-
-        function success( status ) {
-          if( !status.hasPermission ) error();
-        }
-        alert('cordova.plugins.permissions is now available');
-      });
-      // onSuccess Callback
-      // Camera access and clean 
-      //
-
-      // navigator.camera.cleanup(onSuccess, onFail);
-
-      function onSuccess() {
-          console.log("Camera cleanup success.")
+    // Clicked details
+    $('.clicked-ad').on('click',function(){
+      var panel = $(this).parent().next().next();
+      if(!$(panel).is(':visible')){
+        $(panel).show();
+      }else{
+        $(panel).hide();
       }
+    });
 
-      function onFail(message) {
-          alert('Failed because: ' + message);
-      }
+      // document.addEventListener('deviceready', function() {
 
-      function openCamera(selection) {
+      //   var permissions = cordova.plugins.permissions;
+      //   permissions.requestPermission(permissions.CAMERA, success, error);
 
-          var srcType = Camera.PictureSourceType.CAMERA;
-          var options = setOptions(srcType);
-          var func = createNewFileEntry;
+      //   function error() {
+      //     alert('Camera permission is not turned on');
+      //   }
 
-          navigator.camera.getPicture(function cameraSuccess(imageUri) {
+      //   function success( status ) {
+      //     if( !status.hasPermission ) error();
+      //   }
+      //   alert('cordova.plugins.permissions is now available');
+      // });
+      // // onSuccess Callback
+      // // Camera access and clean 
+      // //
 
-              displayImage(imageUri);
-              // You may choose to copy the picture, save it somewhere, or upload.
-              func(imageUri);
+      // // navigator.camera.cleanup(onSuccess, onFail);
 
-          }, function cameraError(error) {
-              console.debug("Unable to obtain picture: " + error, "app");
+      // function onSuccess() {
+      //     console.log("Camera cleanup success.")
+      // }
 
-          }, options);
-      }      
-      // onSuccess Callback
-      // This method accepts a Position object, which contains the
-      // current GPS coordinates
-      //
-      var onSuccess = function(position) {
-          console.log('Latitude: '          + position.coords.latitude          + '\n' +
-                'Longitude: '         + position.coords.longitude         + '\n' +
-                'Altitude: '          + position.coords.altitude          + '\n' +
-                'Accuracy: '          + position.coords.accuracy          + '\n' +
-                'Altitude Accuracy: ' + position.coords.altitudeAccuracy  + '\n' +
-                'Heading: '           + position.coords.heading           + '\n' +
-                'Speed: '             + position.coords.speed             + '\n' +
-                'Timestamp: '         + position.timestamp                + '\n');
-      };
+      // function onFail(message) {
+      //     alert('Failed because: ' + message);
+      // }
 
-      // onError Callback receives a PositionError object
-      //
-      function onError(error) {
-          alert('code: '    + error.code    + '\n' +
-                'message: ' + error.message + '\n');
-      }
+      // function openCamera(selection) {
 
-      navigator.geolocation.getCurrentPosition(onSuccess, onError);
+      //     var srcType = Camera.PictureSourceType.CAMERA;
+      //     var options = setOptions(srcType);
+      //     var func = createNewFileEntry;
+
+      //     navigator.camera.getPicture(function cameraSuccess(imageUri) {
+
+      //         displayImage(imageUri);
+      //         // You may choose to copy the picture, save it somewhere, or upload.
+      //         func(imageUri);
+
+      //     }, function cameraError(error) {
+      //         console.debug("Unable to obtain picture: " + error, "app");
+
+      //     }, options);
+      // }      
+      // // onSuccess Callback
+      // // This method accepts a Position object, which contains the
+      // // current GPS coordinates
+      // //
+      // var onSuccess = function(position) {
+      //     console.log('Latitude: '          + position.coords.latitude          + '\n' +
+      //           'Longitude: '         + position.coords.longitude         + '\n' +
+      //           'Altitude: '          + position.coords.altitude          + '\n' +
+      //           'Accuracy: '          + position.coords.accuracy          + '\n' +
+      //           'Altitude Accuracy: ' + position.coords.altitudeAccuracy  + '\n' +
+      //           'Heading: '           + position.coords.heading           + '\n' +
+      //           'Speed: '             + position.coords.speed             + '\n' +
+      //           'Timestamp: '         + position.timestamp                + '\n');
+      // };
+
+      // // onError Callback receives a PositionError object
+      // //
+      // function onError(error) {
+      //     alert('code: '    + error.code    + '\n' +
+      //           'message: ' + error.message + '\n');
+      // }
+
+      // navigator.geolocation.getCurrentPosition(onSuccess, onError);
 
 
   </script>

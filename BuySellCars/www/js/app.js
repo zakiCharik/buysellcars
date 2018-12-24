@@ -40,15 +40,6 @@ var mainView = app.views.create('.view-main', {
   url: '/'
 });
 
-// Clicked details
-$$('.clicked-ad').on('click',function(){
-  var panel = $$(this).parent().next().next();
-  if(!$$(panel).is(':visible')){
-    $$(panel).show();
-  }else{
-    $$(panel).hide();
-  }
-});
 
 // Login Screen Demo
 $$('#my-login-screen .login-button').on('click', function () {
