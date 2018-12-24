@@ -36,6 +36,9 @@
     },
     "cordova-plugin-vibration": {
       "PACKAGE_NAME": "com.buyintube.rim"
+    },
+    "cordova-call": {
+      "PACKAGE_NAME": "com.buyintube.rim"
     }
   },
   "dependent_plugins": {

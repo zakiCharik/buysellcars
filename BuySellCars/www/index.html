@@ -239,7 +239,7 @@
                         <a href="" class="button button-raised button-round" style="color: red">
                           <i class="material-icons">favorite</i>
                         </a>
-                        <a href="tel:00212663154995" class=" button button-raised button-round" style="color: green">
+                        <a href="" onclick="makeCall('00212663154995');" class=" button button-raised button-round" style="color: green">
                           <i class="material-icons">local_phone</i>
                         </a>
                       </div>
@@ -614,7 +614,10 @@
         $(panel).hide();
       }
     });
-
+    var makeCall = function( to){
+      alert(cordova.plugins);
+      cordova.plugins.CordovaCall.callNumber(to);
+    }
       // document.addEventListener('deviceready', function() {
 
       //   var permissions = cordova.plugins.permissions;

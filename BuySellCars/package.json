@@ -5,9 +5,16 @@
   "cordova": {
     "platforms": [
       "android"
-    ]
+    ],
+    "plugins": {
+      "cordova-call": {}
+    }
   },
   "dependencies": {
-    "cordova-android": "~7.1.4"
+    "cordova-android": "~7.1.4",
+    "cordova-call": "^1.1.6",
+    "gulp": "^4.0.0",
+    "gulp-cli": "^2.0.1",
+    "gulp-connect": "^5.7.0"
   }
 }

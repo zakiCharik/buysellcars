@@ -55,6 +55,10 @@
             {
               "xml": "<feature name=\"Vibration\"><param name=\"android-package\" value=\"org.apache.cordova.vibration.Vibration\" /></feature>",
               "count": 1
+            },
+            {
+              "xml": "<feature name=\"CordovaCall\"><param name=\"android-package\" value=\"com.dmarc.cordovacall.CordovaCall\" /><param name=\"onload\" value=\"true\" /></feature>",
+              "count": 1
             }
           ]
         }
@@ -93,6 +97,18 @@
             {
               "xml": "<uses-permission android:name=\"android.permission.ACCESS_NETWORK_STATE\" />",
               "count": 1
+            },
+            {
+              "xml": "<uses-permission android:name=\"android.permission.BIND_TELECOM_CONNECTION_SERVICE\" />",
+              "count": 1
+            },
+            {
+              "xml": "<uses-permission android:name=\"android.permission.CALL_PHONE\" />",
+              "count": 1
+            },
+            {
+              "xml": "<uses-permission android:name=\"android.permission.MANAGE_OWN_CALLS\" />",
+              "count": 1
             }
           ],
           "application": [
@@ -104,6 +120,12 @@
           "/manifest": [
             {
               "xml": "<uses-permission android:name=\"android.permission.VIBRATE\" />",
+              "count": 1
+            }
+          ],
+          "/manifest/application": [
+            {
+              "xml": "<service android:name=\"com.dmarc.cordovacall.MyConnectionService\" android:permission=\"android.permission.BIND_TELECOM_CONNECTION_SERVICE\"><intent-filter><action android:name=\"android.telecom.ConnectionService\" /></intent-filter></service>",
               "count": 1
             }
           ]
@@ -143,6 +165,9 @@
       "PACKAGE_NAME": "com.buyintube.rim"
     },
     "cordova-plugin-vibration": {
+      "PACKAGE_NAME": "com.buyintube.rim"
+    },
+    "cordova-call": {
       "PACKAGE_NAME": "com.buyintube.rim"
     }
   },
@@ -517,6 +542,14 @@
         "navigator.notification",
         "navigator"
       ]
+    },
+    {
+      "id": "cordova-call.CordovaCall",
+      "file": "plugins/cordova-call/www/CordovaCall.js",
+      "pluginId": "cordova-call",
+      "clobbers": [
+        "cordova.plugins.CordovaCall"
+      ]
     }
   ],
   "plugin_metadata": {
@@ -530,6 +563,7 @@
     "cordova-plugin-globalization": "1.0.9",
     "cordova-plugin-inappbrowser": "1.7.2",
     "cordova-plugin-network-information": "1.3.4",
-    "cordova-plugin-vibration": "2.1.6"
+    "cordova-plugin-vibration": "2.1.6",
+    "cordova-call": "1.1.6"
   }
 }
