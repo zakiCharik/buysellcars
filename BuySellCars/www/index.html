@@ -11,20 +11,23 @@
       * Disables use of inline scripts in order to mitigate risk of XSS vulnerabilities. To change this:
           * Enable inline JS: add 'unsafe-inline' to default-src
   -->
-  <meta http-equiv="Content-Security-Policy" content="default-src * 'self' 'unsafe-inline' 'unsafe-eval' data: gap: content:">
+  <meta http-equiv="Content-Security-Policy" content="default-src * blob: gap://ready 'self' 'unsafe-inline' 'unsafe-eval' data: gap: content:">
+
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui, viewport-fit=cover">
+
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="default">
   <meta name="theme-color" content="#2196f3">
-  <meta name="format-detection" content="telephone=no">
+  <meta name="format-detection" content="telephone=yes">
   <meta name="msapplication-tap-highlight" content="no">
   <title>My App</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mediaelement/4.2.6/mediaelementplayer.css">
   <link rel="stylesheet" href="framework7/css/framework7.min.css">
   <link rel="stylesheet" href="css/icons.css">
   <link rel="stylesheet" href="css/app.css">
-  <link rel="stylesheet" href="css/airplay.css">
   <style type="text/css">
+    .hide{
+      display: none;
+    }
     ul {
       list-style: none;
     }
@@ -56,7 +59,13 @@
       margin-left: 1px !important;
       margin-right: 1px !important;
     }
+    .video-js{
+      width: 100% !important;
+    }
   </style>
+  <link rel="stylesheet" href="https://unpkg.com/video.js/dist/video-js.min.css">
+  <script src="//unpkg.com/video.js/dist/video.min.js"></script>
+  <script src="//src.litix.io/videojs/2/videojs-mux.js"></script>
 </head>
 <body>
   <div id="app" class="framework7-root">
@@ -68,19 +77,51 @@
         <div class="page">
           <div class="navbar">
             <div class="navbar-inner sliding">
-              <div class="title">Left Panel</div>
+              <div class="title">Menu Panel</div>
             </div>
           </div>
           <div class="page-content">
-            <div class="block-title">Left View Navigation</div>
-            <div class="list links-list">
+            <div class="list links-list ">
+              <ul>
+                <li>
+                  <a href="/insertad/" data-view=".view-main" class="panel-close">Inserer Annonce</a>
+                </li>
+
+                <li>
+                  <a href="/insertad/" data-view=".view-main" class="panel-close">Booster une Annonce</a>
+                </li>
+
+                <li>
+                  <a href="/insertad/" data-view=".view-main" class="panel-close">Mes Annonce</a>
+                </li>
+
+                <li>
+                  <a href="/insertad/" data-view=".view-main" class="panel-close">Mes Messages</a>
+                </li>
+
+                <li>
+                  <a href="/insertad/" data-view=".view-main" class="panel-close">Nos Contactez</a>
+                </li>
+
+                <li>
+                  <a href="/insertad/" data-view=".view-main" class="panel-close">Information</a>
+                </li>
+
+                <li>
+                  <a href="/insertad/" data-view=".view-main" class="panel-close">Parntenaires</a>
+                </li>
+              </ul>
+            </div>
+
+            <div class="block-title hide">Left View Navigation</div>
+            <div class="list links-list hide">
               <ul>
                 <li><a href="/left-page-1/">Left Page 1</a></li>
                 <li><a href="/left-page-2/">Left Page 2</a></li>
               </ul>
             </div>
-            <div class="block-title">Control Main View</div>
-            <div class="list links-list">
+            <div class="block-title hide">Control Main View</div>
+            <div class="list links-list hide">
               <ul>
                 <li>
                   <a href="/about/" data-view=".view-main" class="panel-close">About</a>
@@ -119,7 +160,7 @@
       <div class="page" data-name="home">
         <!-- Top Navbar -->
         <div class="navbar">
-          <div class="navbar-inner">
+          <div class="navbar-inner sliding">
             <div class="left">
               <a href="#" class="link icon-only panel-open" data-panel="left">
                 <i class="icon f7-icons ios-only">menu</i>
@@ -143,7 +184,7 @@
           </div>
         </div>
         <!-- Toolbar-->
-        <div class="subnavbar sliding" aria-hidden="true">
+        <div class="subnavbar" style="margin-top: -1px;">
           <div class="subnavbar-inner">
             <div class="segmented segmented-raised">
             <button class="button" style="border: none;"><i class="icon f7-icons ">home</i> </button>
@@ -154,7 +195,7 @@
             </div>
           </div>          
           <!-- Toolbar-->
-          <div class="subnavbar ">
+          <div class="subnavbar " style="margin-top: -10px; display :none;">
             <div class="subnavbar-inner ">
               <div class="segmented segmented-raised row">
                 <button class="button col-60" style="border: none;"> <span id="your_location" style="font-size: 11px;text-align: left;"><i class="material-icons" style="font-size: 12px;">map</i> Berrechid, Grande Casablanca</span></button>
@@ -178,11 +219,18 @@
                       Your browser does not support the video tag.
                     </video> -->
 
-                    <video class="video-container video-stream"  width="100%" height="auto" id="player1" preload="">
+<!--                     <video class="video-container video-stream" id="player1" preload="none">
                         <source type="video/youtube" src="http://www.youtube.com/watch?v=nOEw9iiopwI" />
                     </video>
-
-
+ -->
+                    <video
+                        id="vid1"
+                        class="video-js vjs-default-skin"
+                        controls
+                        width="100%" height="170" 
+                         data-setup='{ "techOrder": ["youtube"], "sources": [{ "type": "video/youtube", "src": "blob:https://www.youtube.com/watch?v=iRusbYIyRNI"}] }'
+                      >
+                      </video>
 
                     <div class="">
                        <div class="row gp-btns" >
@@ -196,7 +244,7 @@
                           <i class="material-icons">local_phone</i>
                         </a>
                       </div>
-                      <a href="" class="button button-raised button-round" style="border: none; color: white; position: absolute;left: 0px;bottom: 10px;">
+                      <a href="" class="button button-raised button-round" onclick="_vplayer.requestFullscreen()" style="border: none; color: white; position: absolute;left: 0px;bottom: 10px;">
                         <i class="material-icons">fullscreen</i>
                       </a>
 
@@ -218,19 +266,22 @@
                 <div class="card-content content-ad" style="display: none;"> 
                   <div class="row">
                     <ul class="">
-                      <li class="">Marque : xx</li>
-                      <li class="">Modèle : xx</li>
+                      <li class="">Description : xx</li>
+                      <li class="">Annonceur : xx</li>
+                      <li class="">Catégorie : xx</li>
+                      <li class="">Année-Modéle : xxxx</li>
+                      <li class="">Dédouanement : xxxx</li>
                       <li class="">Kilométrage : .00 KM</li>
-                      <li class="">Année : xxxx</li>
-                      <li class="">Puissance fiscal : .00 CH</li>
+                      <li class="">Marque : .00 KM</li>
+                      <li class="">Carburant : Diesel</li>
                       <li class="">Transmission : Auto/Manuelle</li>
-                      <li class="">Coût Vignette : .00 DHS</li>
-                      <li class="">Année Déoune : Diesel</li>
-                      <li class="">Carburant : Diesel</li>
-                      <li class="">Carburant : Diesel</li>
-                      <li class="">Carburant : Diesel</li>
-                      <li class="">Carburant : Diesel</li>
-                      <li class="">Carburant : Diesel</li>
+                      <li class="">Modéle : xx</li>
+                      <li class="">Puissance fiscal : .00 CH</li>
+                      <li class="">Vignette : .00 DHS</li>
+                      <li class="">Vignette d'année en cours : Oui/Non</li>
+                      <li class="">Consomation % : .00 </li>
+                      <li class="">Accidenté : Oui/Non</li>
+                      <li class="">Type de papier de vente : CG|Reçu|Procuration|Dépo</li>
                     </ul>
                   </div>
                 </div>
@@ -282,19 +333,22 @@
                 <div class="card-content content-ad" style="display: none;"> 
                   <div class="row">
                     <ul class="">
-                      <li class="">Marque : xx</li>
-                      <li class="">Modèle : xx</li>
+                      <li class="">Description : xx</li>
+                      <li class="">Annonceur : xx</li>
+                      <li class="">Catégorie : xx</li>
+                      <li class="">Année-Modéle : xxxx</li>
+                      <li class="">Dédouanement : xxxx</li>
                       <li class="">Kilométrage : .00 KM</li>
-                      <li class="">Année : xxxx</li>
-                      <li class="">Puissance fiscal : .00 CH</li>
+                      <li class="">Marque : .00 KM</li>
+                      <li class="">Carburant : Diesel</li>
                       <li class="">Transmission : Auto/Manuelle</li>
-                      <li class="">Coût Vignette : .00 DHS</li>
-                      <li class="">Année Déoune : Diesel</li>
-                      <li class="">Carburant : Diesel</li>
-                      <li class="">Carburant : Diesel</li>
-                      <li class="">Carburant : Diesel</li>
-                      <li class="">Carburant : Diesel</li>
-                      <li class="">Carburant : Diesel</li>
+                      <li class="">Modéle : xx</li>
+                      <li class="">Puissance fiscal : .00 CH</li>
+                      <li class="">Vignette : .00 DHS</li>
+                      <li class="">Vignette d'année en cours : Oui/Non</li>
+                      <li class="">Consomation % : .00 </li>
+                      <li class="">Accidenté : Oui/Non</li>
+                      <li class="">Type de papier de vente : CG|Reçu|Procuration|Dépo</li>
                     </ul>
                   </div>
                 </div>
@@ -342,19 +396,22 @@
                 <div class="card-content content-ad" style="display: none;"> 
                   <div class="row">
                     <ul class="">
-                      <li class="">Marque : xx</li>
-                      <li class="">Modèle : xx</li>
+                      <li class="">Description : xx</li>
+                      <li class="">Annonceur : xx</li>
+                      <li class="">Catégorie : xx</li>
+                      <li class="">Année-Modéle : xxxx</li>
+                      <li class="">Dédouanement : xxxx</li>
                       <li class="">Kilométrage : .00 KM</li>
-                      <li class="">Année : xxxx</li>
-                      <li class="">Puissance fiscal : .00 CH</li>
+                      <li class="">Marque : .00 KM</li>
+                      <li class="">Carburant : Diesel</li>
                       <li class="">Transmission : Auto/Manuelle</li>
-                      <li class="">Coût Vignette : .00 DHS</li>
-                      <li class="">Année Déoune : Diesel</li>
-                      <li class="">Carburant : Diesel</li>
-                      <li class="">Carburant : Diesel</li>
-                      <li class="">Carburant : Diesel</li>
-                      <li class="">Carburant : Diesel</li>
-                      <li class="">Carburant : Diesel</li>
+                      <li class="">Modéle : xx</li>
+                      <li class="">Puissance fiscal : .00 CH</li>
+                      <li class="">Vignette : .00 DHS</li>
+                      <li class="">Vignette d'année en cours : Oui/Non</li>
+                      <li class="">Consomation % : .00 </li>
+                      <li class="">Accidenté : Oui/Non</li>
+                      <li class="">Type de papier de vente : CG|Reçu|Procuration|Dépo</li>
                     </ul>
                   </div>
                 </div>
@@ -400,21 +457,29 @@
                   <div class="demo-facebook-name" style="font-size: 17px;font-weight: bold;">100 000 DHS</div>
                 </div>
                 <div class="card-content content-ad" style="display: none;"> 
+                  <div class="card-footer">
+                      <i class="material-icons">attach_money</i>
+                      <i class="material-icons">chat_bubble</i>
+                      <i class="material-icons" style="color: green;">phone</i>
+                  </div>
                   <div class="row">
                     <ul class="">
-                      <li class="">Marque : xx</li>
-                      <li class="">Modèle : xx</li>
+                      <li class="">Description : xx</li>
+                      <li class="">Annonceur : xx</li>
+                      <li class="">Catégorie : xx</li>
+                      <li class="">Année-Modéle : xxxx</li>
+                      <li class="">Dédouanement : xxxx</li>
                       <li class="">Kilométrage : .00 KM</li>
-                      <li class="">Année : xxxx</li>
-                      <li class="">Puissance fiscal : .00 CH</li>
+                      <li class="">Marque : .00 KM</li>
+                      <li class="">Carburant : Diesel</li>
                       <li class="">Transmission : Auto/Manuelle</li>
-                      <li class="">Coût Vignette : .00 DHS</li>
-                      <li class="">Année Déoune : Diesel</li>
-                      <li class="">Carburant : Diesel</li>
-                      <li class="">Carburant : Diesel</li>
-                      <li class="">Carburant : Diesel</li>
-                      <li class="">Carburant : Diesel</li>
-                      <li class="">Carburant : Diesel</li>
+                      <li class="">Modéle : xx</li>
+                      <li class="">Puissance fiscal : .00 CH</li>
+                      <li class="">Vignette : .00 DHS</li>
+                      <li class="">Vignette d'année en cours : Oui/Non</li>
+                      <li class="">Consomation % : .00 </li>
+                      <li class="">Accidenté : Oui/Non</li>
+                      <li class="">Type de papier de vente : CG|Reçu|Procuration|Dépo</li>
                     </ul>
                   </div>
                 </div>
@@ -460,21 +525,29 @@
                   <div class="demo-facebook-name" style="font-size: 17px;font-weight: bold;">100 000 DHS</div>
                 </div>
                 <div class="card-content content-ad" style="display: none;"> 
+                  <div class="card-footer">
+                      <i class="material-icons">attach_money</i>
+                      <i class="material-icons">chat_bubble</i>
+                      <i class="material-icons" style="color: green;">phone</i>
+                  </div>
                   <div class="row">
                     <ul class="">
-                      <li class="">Marque : xx</li>
-                      <li class="">Modèle : xx</li>
+                      <li class="">Description : xx</li>
+                      <li class="">Annonceur : xx</li>
+                      <li class="">Catégorie : xx</li>
+                      <li class="">Année-Modéle : xxxx</li>
+                      <li class="">Dédouanement : xxxx</li>
                       <li class="">Kilométrage : .00 KM</li>
-                      <li class="">Année : xxxx</li>
-                      <li class="">Puissance fiscal : .00 CH</li>
+                      <li class="">Marque : .00 KM</li>
+                      <li class="">Carburant : Diesel</li>
                       <li class="">Transmission : Auto/Manuelle</li>
-                      <li class="">Coût Vignette : .00 DHS</li>
-                      <li class="">Année Déoune : Diesel</li>
-                      <li class="">Carburant : Diesel</li>
-                      <li class="">Carburant : Diesel</li>
-                      <li class="">Carburant : Diesel</li>
-                      <li class="">Carburant : Diesel</li>
-                      <li class="">Carburant : Diesel</li>
+                      <li class="">Modéle : xx</li>
+                      <li class="">Puissance fiscal : .00 CH</li>
+                      <li class="">Vignette : .00 DHS</li>
+                      <li class="">Vignette d'année en cours : Oui/Non</li>
+                      <li class="">Consomation % : .00 </li>
+                      <li class="">Accidenté : Oui/Non</li>
+                      <li class="">Type de papier de vente : CG|Reçu|Procuration|Dépo</li>
                     </ul>
                   </div>
                 </div>
@@ -489,7 +562,7 @@
             </div>
           
             <!-- Action save video -->
-            <div class="fab fab-extended fab-center-bottom" style="position: fixed;bottom: 10px; z-index: 10;">
+            <div class="fab fab-extended fab-center-bottom" onclick="openCamera();"style="position: fixed;bottom: 10px; z-index: 10;">
               <a href="#" class="">
                 <i class="icon f7-icons ios-only">videocam_round_fill</i>
                 <div class="fab-text">Save</div>
@@ -529,35 +602,65 @@
   src="https://code.jquery.com/jquery-3.3.1.min.js"
   integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
   crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/mediaelement/4.2.6/mediaelement-and-player.min.js"></script>
-  <script src="js/airplay.js"></script>
+  <script src="js/play.js"></script>
 
 
   <script type="text/javascript">
-    // onSuccess Callback
-    // This method accepts a Position object, which contains the
-    // current GPS coordinates
-    //
-    var onSuccess = function(position) {
-        console.log('Latitude: '          + position.coords.latitude          + '\n' +
-              'Longitude: '         + position.coords.longitude         + '\n' +
-              'Altitude: '          + position.coords.altitude          + '\n' +
-              'Accuracy: '          + position.coords.accuracy          + '\n' +
-              'Altitude Accuracy: ' + position.coords.altitudeAccuracy  + '\n' +
-              'Heading: '           + position.coords.heading           + '\n' +
-              'Speed: '             + position.coords.speed             + '\n' +
-              'Timestamp: '         + position.timestamp                + '\n');
-    };
 
-    // onError Callback receives a PositionError object
-    //
-    function onError(error) {
-        alert('code: '    + error.code    + '\n' +
-              'message: ' + error.message + '\n');
-    }
+      // onSuccess Callback
+      // Camera access and clean 
+      //
+      console.log(navigator);
+      navigator.camera.cleanup(onSuccess, onFail);
 
-    navigator.geolocation.getCurrentPosition(onSuccess, onError);
+      function onSuccess() {
+          console.log("Camera cleanup success.")
+      }
 
+      function onFail(message) {
+          alert('Failed because: ' + message);
+      }
+
+      function openCamera(selection) {
+
+          var srcType = Camera.PictureSourceType.CAMERA;
+          var options = setOptions(srcType);
+          var func = createNewFileEntry;
+
+          navigator.camera.getPicture(function cameraSuccess(imageUri) {
+
+              displayImage(imageUri);
+              // You may choose to copy the picture, save it somewhere, or upload.
+              func(imageUri);
+
+          }, function cameraError(error) {
+              console.debug("Unable to obtain picture: " + error, "app");
+
+          }, options);
+      }      
+      // onSuccess Callback
+      // This method accepts a Position object, which contains the
+      // current GPS coordinates
+      //
+      var onSuccess = function(position) {
+          console.log('Latitude: '          + position.coords.latitude          + '\n' +
+                'Longitude: '         + position.coords.longitude         + '\n' +
+                'Altitude: '          + position.coords.altitude          + '\n' +
+                'Accuracy: '          + position.coords.accuracy          + '\n' +
+                'Altitude Accuracy: ' + position.coords.altitudeAccuracy  + '\n' +
+                'Heading: '           + position.coords.heading           + '\n' +
+                'Speed: '             + position.coords.speed             + '\n' +
+                'Timestamp: '         + position.timestamp                + '\n');
+      };
+
+      // onError Callback receives a PositionError object
+      //
+      function onError(error) {
+          alert('code: '    + error.code    + '\n' +
+                'message: ' + error.message + '\n');
+      }
+
+      navigator.geolocation.getCurrentPosition(onSuccess, onError);
 
       $('.clicked-ad').on('click',function(){
         var panel = $(this).parent().next().next();
@@ -566,12 +669,6 @@
         }else{
           $(panel).hide();
         }
-      });
-      $(document).ready(function($) {
-
-          // declare object for video
-          var player = new MediaElementPlayer('#player1');
-
       });
 
   </script>
