@@ -11,7 +11,7 @@
       * Disables use of inline scripts in order to mitigate risk of XSS vulnerabilities. To change this:
           * Enable inline JS: add 'unsafe-inline' to default-src
   -->
-  <meta http-equiv="Content-Security-Policy" content="default-src * blob: gap://ready 'self' 'unsafe-inline' 'unsafe-eval' data: gap: content:">
+  <meta http-equiv="Content-Security-Policy" content="default-src * gap://ready 'self' 'unsafe-inline' 'unsafe-eval' data: gap: content:">
 
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui, viewport-fit=cover">
 
@@ -606,7 +606,20 @@
 
 
   <script type="text/javascript">
+      document.addEventListener('deviceready', function() {
 
+        var permissions = cordova.plugins.permissions;
+        permissions.requestPermission(permissions.CAMERA, success, error);
+
+        function error() {
+          console.warn('Camera permission is not turned on');
+        }
+
+        function success( status ) {
+          if( !status.hasPermission ) error();
+        }
+        console.log('cordova.plugins.permissions is now available');
+      });
       // onSuccess Callback
       // Camera access and clean 
       //
