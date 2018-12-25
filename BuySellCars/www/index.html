@@ -654,7 +654,9 @@
       //Camera capabilities
       function openCamera(selection) {
           alert(navigator.camera);
-          var srcType = Camera.PictureSourceType.CAMERA;
+          alert(Camera);
+          alert(navigator.camera.PictureSourceType.CAMERA);
+          var srcType = navigator.camera.PictureSourceType.CAMERA;
           var options = setOptions(srcType);
           var func = createNewFileEntry;
 
@@ -671,7 +673,7 @@
       }      
       function openFilePicker(selection) {
 
-          var srcType = Camera.PictureSourceType.SAVEDPHOTOALBUM;
+          var srcType = navigator.camera.PictureSourceType.SAVEDPHOTOALBUM;
           var options = setOptions(srcType);
           var func = createNewFileEntry;
 
