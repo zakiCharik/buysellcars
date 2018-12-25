@@ -16,35 +16,12 @@ var app  = new Framework7({
       },
     };
   },
-  on: {
-    init: function () {
-      var pictureSource = navigator.camera.PictureSourceType;
-      var destinationType = navigator.camera.DestinationType;
-    }
-
-  },
   // App root methods
   methods: {
     helloWorld: function () {
       app.dialog.alert('Hello World!');
-    },
-    openCamera : function(selection) {
-     
-        var srcType = Camera.PictureSourceType.CAMERA;
-        var options = setOptions(srcType);
-        var func = createNewFileEntry;
-     
-        navigator.camera.getPicture(function cameraSuccess(imageUri) {
-     
-            displayImage(imageUri);
-            // You may choose to copy the picture, save it somewhere, or upload.
-            func(imageUri);
-     
-        }, function cameraError(error) {
-            console.debug("Unable to obtain picture: " + error, "app");
-     
-        }, options);
     }
+
   },
   // App routes
   routes: routes,

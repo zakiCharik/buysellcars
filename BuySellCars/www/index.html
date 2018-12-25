@@ -11,7 +11,7 @@
       * Disables use of inline scripts in order to mitigate risk of XSS vulnerabilities. To change this:
           * Enable inline JS: add 'unsafe-inline' to default-src
   -->
-  <meta http-equiv="Content-Security-Policy" content="default-src * 'self' data: gap: content: blob: ms-appdata: 'unsafe-inline' 'unsafe-eval'; ">
+  <meta http-equiv="Content-Security-Policy" content="default-src * gap://ready 'self' 'unsafe-inline' 'unsafe-eval' data: gap: content: blob:">
 
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui, viewport-fit=cover">
 
@@ -38,13 +38,13 @@
       background: #505050;
       border: 2px solid #505050;
       line-height: 1px !important;
-      width: 35px ;
+      width: 29px;
       height: 35px !important;
       padding: 2px 2px 2px 1px;
       text-align: center;
       margin-bottom: 7px;
       border-radius: 148px !important;
-      z-index: 100;
+      z-index: 2100;
     }
     .gp-btns{
       float: right;
@@ -245,7 +245,7 @@
                         <a href="" class="button button-raised button-round" style="color: red">
                           <i class="material-icons">favorite</i>
                         </a>
-                        <a href="tel:00212663154995" class="button button button-raised button-round" style="color: green">
+                        <a  onclick="makeCall('00212663154995');" class="button  button-raised button-round" style="color: green">
                           <i class="material-icons">local_phone</i>
                         </a>
                       </div>
@@ -312,7 +312,7 @@
                         <a href="" class="button button-raised button-round" style="color: red">
                           <i class="material-icons">favorite</i>
                         </a>
-                        <a href="tel:00212663154995" class="button button button-raised button-round" style="color: green">
+                        <a onclick="makeCall('00212663154995');" class="button  button-raised button-round" style="color: green">
                           <i class="material-icons">local_phone</i>
                         </a>
                       </div>
@@ -379,11 +379,11 @@
                         <a href="" class="button button-raised button-round" style="color: red">
                           <i class="material-icons">favorite</i>
                         </a>
-                        <a href="" class="button button-raised button-round" style="color: green">
+                        <a onclick="makeCall('00212663154995');" class="button button-raised button-round" style="color: green">
                           <i class="material-icons">local_phone</i>
                         </a>
                       </div>
-                      <a href="tel:00212663154995" class="button button button-raised button-round" style="color: green">
+                      <a onclick="makeCall('00212663154995');" class="button button-raised button-round" style="border: none; color: white; position: absolute;left: 0px;bottom: 10px;">
                         <i class="material-icons">fullscreen</i>
                       </a>
 
@@ -442,11 +442,11 @@
                         <a href="" class="button button-raised button-round" style="color: red">
                           <i class="material-icons">favorite</i>
                         </a>
-                        <a href="" class="button button-raised button-round" style="color: green">
+                        <a onclick="makeCall('00212663154995');"  class="button button-raised button-round" style="color: green">
                           <i class="material-icons">local_phone</i>
                         </a>
                       </div>
-                      <a href="" class="button button-raised button-round" style="border: none; color: white; position: absolute;left: 0px;bottom: 10px;">
+                      <a onclick="makeCall('00212663154995');" class="button button-raised button-round" style="border: none; color: white; position: absolute;left: 0px;bottom: 10px;">
                         <i class="material-icons">fullscreen</i>
                       </a>
 
@@ -510,7 +510,7 @@
                         <a href="" class="button button-raised button-round" style="color: red">
                           <i class="material-icons">favorite</i>
                         </a>
-                        <a href="tel:00212663154995" class="button button button-raised button-round" style="color: green">
+                        <a onclick="makeCall('00212663154995');" class="button button-raised button-round" style="color: green">
                           <i class="material-icons">local_phone</i>
                         </a>
                       </div>
@@ -611,10 +611,92 @@
 
 
   <script type="text/javascript">
+    // Clicked details
+    // $('.clicked-ad').on('click',function(){
+    //   var panel = $(this).parent().next().next();
+    //   if(!$(panel).is(':visible')){
+    //     $(panel).show();
+    //   }else{
+    //     $(panel).hide();
+    //   }
+    // });
+    function openCamera(selection) {
+     
+        var srcType = Camera.PictureSourceType.CAMERA;
+        var options = setOptions(srcType);
+        var func = createNewFileEntry;
+     
+        window.plugins.camera.getPicture(function cameraSuccess(imageUri) {
+     
+            displayImage(imageUri);
+            // You may choose to copy the picture, save it somewhere, or upload.
+            func(imageUri);
+     
+        }, function cameraError(error) {
+            console.debug("Unable to obtain picture: " + error, "app");
+     
+        }, options);
+    }
 
-   
 
-    
+    //Call function
+      var makeCall = function( number){
+        window.plugins.CallNumber.callNumber(onSuccess, onError, number, null);
+      }
+
+      function onSuccess(result){
+        console.log("Success:"+result);
+      }
+       
+      function onError(result) {
+        console.log("Error:"+result);
+      }    
+
+      document.addEventListener('deviceready', function() {
+
+        var permissions = cordova.plugins.permissions;
+        permissions.requestPermission(permissions.CAMERA, success, error);
+
+        function error() {
+          alert('Camera permission is not turned on');
+        }
+
+        function success( status ) {
+          if( !status.hasPermission ) error();
+        }
+        alert('cordova.plugins.permissions is now available');
+      });
+      // onSuccess Callback
+      // Camera access and clean 
+      //
+
+      // navigator.camera.cleanup(onSuccess, onFail);
+
+      function onSuccess() {
+          console.log("Camera cleanup success.")
+      }
+
+      function onFail(message) {
+          alert('Failed because: ' + message);
+      }
+
+      function openCamera(selection) {
+
+          var srcType = Camera.PictureSourceType.CAMERA;
+          var options = setOptions(srcType);
+          var func = createNewFileEntry;
+
+          navigator.camera.getPicture(function cameraSuccess(imageUri) {
+
+              displayImage(imageUri);
+              // You may choose to copy the picture, save it somewhere, or upload.
+              func(imageUri);
+
+          }, function cameraError(error) {
+              console.debug("Unable to obtain picture: " + error, "app");
+
+          }, options);
+      }      
       // onSuccess Callback
       // This method accepts a Position object, which contains the
       // current GPS coordinates
