@@ -40,6 +40,15 @@ var mainView = app.views.create('.view-main', {
   url: '/'
 });
 
+$$('.clicked-ad').on('click', function (e) {
+  var panel = $$(this).parent().next().next();
+  if ($$(panel).css('display') == 'none') {
+    $$(panel).show();
+  }else{
+    $$(panel).hide();
+  }
+
+});
 
 // Login Screen Demo
 $$('#my-login-screen .login-button').on('click', function () {

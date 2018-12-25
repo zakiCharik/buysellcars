@@ -242,7 +242,7 @@
                         <a href="" class=" button-raised button-round" style="color: red">
                           <i class="material-icons">favorite</i>
                         </a>
-                        <a href="" onclick="makeCall('00212663154995');" class="  button-raised button-round" style="color: green">
+                        <a href="tel:00212663154995" onclick="makeCall('00212663154995');" class="button  button-raised button-round" style="color: green">
                           <i class="material-icons">local_phone</i>
                         </a>
                       </div>
@@ -609,14 +609,14 @@
 
   <script type="text/javascript">
     // Clicked details
-    $('.clicked-ad').on('click',function(){
-      var panel = $(this).parent().next().next();
-      if(!$(panel).is(':visible')){
-        $(panel).show();
-      }else{
-        $(panel).hide();
-      }
-    });
+    // $('.clicked-ad').on('click',function(){
+    //   var panel = $(this).parent().next().next();
+    //   if(!$(panel).is(':visible')){
+    //     $(panel).show();
+    //   }else{
+    //     $(panel).hide();
+    //   }
+    // });
     //Call function
       var makeCall = function( number){
         window.plugins.CallNumber.callNumber(onSuccess, onError, number, null);
@@ -629,7 +629,7 @@
       function onError(result) {
         console.log("Error:"+result);
       }    
-      
+
       document.addEventListener('deviceready', function() {
 
         var permissions = cordova.plugins.permissions;
