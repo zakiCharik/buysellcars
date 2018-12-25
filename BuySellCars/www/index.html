@@ -611,6 +611,9 @@
 
 
   <script type="text/javascript">
+      alert(navigator);
+      alert(navigator.permissions);
+
     // Clicked details
     // $('.clicked-ad').on('click',function(){
     //   var panel = $(this).parent().next().next();
@@ -652,34 +655,10 @@
         console.log("Error:"+result);
       }    
 
-      document.addEventListener('deviceready', function() {
-
-        var permissions = cordova.plugins.permissions;
-        permissions.requestPermission(permissions.CAMERA, success, error);
-
-        function error() {
-          alert('Camera permission is not turned on');
-        }
-
-        function success( status ) {
-          if( !status.hasPermission ) error();
-        }
-        alert('cordova.plugins.permissions is now available');
-      });
-      // onSuccess Callback
-      // Camera access and clean 
-      //
-
-      // navigator.camera.cleanup(onSuccess, onFail);
-
-      function onSuccess() {
-          console.log("Camera cleanup success.")
-      }
-
       function onFail(message) {
           alert('Failed because: ' + message);
       }
-
+      //Camera capabilities
       function openCamera(selection) {
 
           var srcType = Camera.PictureSourceType.CAMERA;
@@ -697,27 +676,6 @@
 
           }, options);
       }      
-      // onSuccess Callback
-      // This method accepts a Position object, which contains the
-      // current GPS coordinates
-      //
-      var onSuccess = function(position) {
-          console.log('Latitude: '          + position.coords.latitude          + '\n' +
-                'Longitude: '         + position.coords.longitude         + '\n' +
-                'Altitude: '          + position.coords.altitude          + '\n' +
-                'Accuracy: '          + position.coords.accuracy          + '\n' +
-                'Altitude Accuracy: ' + position.coords.altitudeAccuracy  + '\n' +
-                'Heading: '           + position.coords.heading           + '\n' +
-                'Speed: '             + position.coords.speed             + '\n' +
-                'Timestamp: '         + position.timestamp                + '\n');
-      };
-
-      // onError Callback receives a PositionError object
-      //
-      function onError(error) {
-          alert('code: '    + error.code    + '\n' +
-                'message: ' + error.message + '\n');
-      }
 
       navigator.geolocation.getCurrentPosition(onSuccess, onError);
 
