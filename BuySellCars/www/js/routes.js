@@ -12,6 +12,14 @@ routes = [
     url: './pages/insertad.html',
   },
   {
+    path: '/insertad1/',
+    url: './pages/insertad1.html',
+  },
+  {
+    path: '/insertad2/',
+    url: './pages/insertad2.html',
+  },
+  {
     path: '/insertad/',
     url: './pages/insertad.html',
   },

@@ -59,6 +59,10 @@
             {
               "xml": "<feature name=\"Vibration\"><param name=\"android-package\" value=\"org.apache.cordova.vibration.Vibration\" /></feature>",
               "count": 1
+            },
+            {
+              "xml": "<feature name=\"CallNumber\"><param name=\"android-package\" value=\"mx.ferreyra.callnumber.CFCallNumber\" /></feature>",
+              "count": 1
             }
           ]
         }
@@ -72,7 +76,7 @@
             },
             {
               "xml": "<uses-permission android:name=\"android.permission.CALL_PHONE\" />",
-              "count": 1
+              "count": 2
             },
             {
               "xml": "<uses-permission android:name=\"android.permission.MANAGE_OWN_CALLS\" />",
@@ -108,6 +112,10 @@
             },
             {
               "xml": "<uses-permission android:name=\"android.permission.ACCESS_NETWORK_STATE\" />",
+              "count": 1
+            },
+            {
+              "xml": "<uses-feature android:name=\"android.hardware.telephony\" android:required=\"false\" />",
               "count": 1
             }
           ],
@@ -168,6 +176,9 @@
       "PACKAGE_NAME": "com.buyintube.rim"
     },
     "cordova-plugin-vibration": {
+      "PACKAGE_NAME": "com.buyintube.rim"
+    },
+    "cordova-plugin-call-number": {
       "PACKAGE_NAME": "com.buyintube.rim"
     }
   },
@@ -550,6 +561,14 @@
         "navigator.notification",
         "navigator"
       ]
+    },
+    {
+      "id": "cordova-plugin-call-number.CallNumber",
+      "file": "plugins/cordova-plugin-call-number/www/CallNumber.js",
+      "pluginId": "cordova-plugin-call-number",
+      "clobbers": [
+        "call"
+      ]
     }
   ],
   "plugin_metadata": {
@@ -564,6 +583,7 @@
     "cordova-plugin-inappbrowser": "1.7.2",
     "cordova-plugin-media-capture": "1.4.3",
     "cordova-plugin-network-information": "1.3.4",
-    "cordova-plugin-vibration": "2.1.6"
+    "cordova-plugin-vibration": "2.1.6",
+    "cordova-plugin-call-number": "1.0.1"
   }
 }

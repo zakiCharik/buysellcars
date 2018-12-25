@@ -33,16 +33,19 @@
     }
     .row.gp-btns a{
       background: #505050;
-      border: 1px solid #505050;
-      line-height: 0px !important; 
-      width: 40px !important; 
-      height: 40px !important; 
-      padding: 7px;      
-      margin-bottom: 5px;
+      border: 2px solid #505050;
+      line-height: 1px !important;
+      width: 29px !important;
+      height: 27px !important;
+      padding: 2px 2px 2px 1px;
+      text-align: center;
+      margin-bottom: 7px;
+      border-radius: 148px !important;
+      z-index: 100;
     }
     .gp-btns{
       float: right;
-      display: inline;
+      display: inline-grid;
       position: absolute;
       top: 0px;
       right: 0px;
@@ -233,13 +236,13 @@
 
                     <div class="">
                        <div class="row gp-btns" >
-                        <a href="" class="button button-raised button-round" style="color: orange">
+                        <a href="" class=" button-raised button-round" style="color: orange">
                           <i class="material-icons">star</i>
                         </a>
-                        <a href="" class="button button-raised button-round" style="color: red">
+                        <a href="" class=" button-raised button-round" style="color: red">
                           <i class="material-icons">favorite</i>
                         </a>
-                        <a href="" onclick="makeCall('00212663154995');" class=" button button-raised button-round" style="color: green">
+                        <a href="" onclick="makeCall('00212663154995');" class="  button-raised button-round" style="color: green">
                           <i class="material-icons">local_phone</i>
                         </a>
                       </div>
@@ -300,13 +303,13 @@
                     </video>
                     <div class="">
                        <div class="row gp-btns" >
-                        <a href="" class="button button-raised button-round" style="color: orange">
+                        <a href="" class=" button-raised button-round" style="color: orange">
                           <i class="material-icons">star</i>
                         </a>
-                        <a href="" class="button button-raised button-round" style="color: red">
+                        <a href="" class=" button-raised button-round" style="color: red">
                           <i class="material-icons">favorite</i>
                         </a>
-                        <a href="tel:00212661647460" class="external button button-raised button-round" style="color: green">
+                        <a href="tel:00212661647460" class="external  button-raised button-round" style="color: green">
                           <i class="material-icons">local_phone</i>
                         </a>
                       </div>
@@ -367,13 +370,13 @@
                     </video>
                     <div class="">
                        <div class="row gp-btns" >
-                        <a href="" class="button button-raised button-round" style="color: orange">
+                        <a href="" class=" button-raised button-round" style="color: orange">
                           <i class="material-icons">star</i>
                         </a>
-                        <a href="" class="button button-raised button-round" style="color: red">
+                        <a href="" class=" button-raised button-round" style="color: red">
                           <i class="material-icons">favorite</i>
                         </a>
-                        <a href="" class="button button-raised button-round" style="color: green">
+                        <a href="" class=" button-raised button-round" style="color: green">
                           <i class="material-icons">local_phone</i>
                         </a>
                       </div>
@@ -430,13 +433,13 @@
                     </video>
                     <div class="">
                        <div class="row gp-btns" >
-                        <a href="" class="button button-raised button-round" style="color: orange">
+                        <a href="" class=" button-raised button-round" style="color: orange">
                           <i class="material-icons">star</i>
                         </a>
-                        <a href="" class="button button-raised button-round" style="color: red">
+                        <a href="" class=" button-raised button-round" style="color: red">
                           <i class="material-icons">favorite</i>
                         </a>
-                        <a href="" class="button button-raised button-round" style="color: green">
+                        <a href="" class=" button-raised button-round" style="color: green">
                           <i class="material-icons">local_phone</i>
                         </a>
                       </div>
@@ -498,13 +501,13 @@
                     </video>
                     <div class="">
                        <div class="row gp-btns" >
-                        <a href="" class="button button-raised button-round" style="color: orange">
+                        <a href="" class=" button-raised button-round" style="color: orange">
                           <i class="material-icons">star</i>
                         </a>
-                        <a href="" class="button button-raised button-round" style="color: red">
+                        <a href="" class=" button-raised button-round" style="color: red">
                           <i class="material-icons">favorite</i>
                         </a>
-                        <a href="" class="button button-raised button-round" style="color: green">
+                        <a href="" class=" button-raised button-round" style="color: green">
                           <i class="material-icons">local_phone</i>
                         </a>
                       </div>
@@ -614,10 +617,19 @@
         $(panel).hide();
       }
     });
-    var makeCall = function( to){
-      alert(cordova.plugins);
-      cordova.plugins.CordovaCall.callNumber(to);
-    }
+    console.log(window.plugins);
+    //Call function
+      var makeCall = function( number){
+        window.plugins.CallNumber.callNumber(onSuccess, onError, number, null);
+      }
+
+      function onSuccess(result){
+        console.log("Success:"+result);
+      }
+       
+      function onError(result) {
+        console.log("Error:"+result);
+      }    
       // document.addEventListener('deviceready', function() {
 
       //   var permissions = cordova.plugins.permissions;
