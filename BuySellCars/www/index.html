@@ -572,6 +572,7 @@
                 <i class="icon f7-icons ios-only">videocam_round_fill</i>
                 <div class="fab-text">Save</div>
               </a>
+              <img id="imageFile" />
             </div>            
             <!-- Action save video -->
 
@@ -641,9 +642,14 @@
       function onFail(message) {
           alert('Failed because: ' + message);
       }
+      function displayImage(imgUri) {
+
+          var elem = document.getElementById('imageFile');
+          elem.src = imgUri;
+      }
       //Camera capabilities
       function openCamera(selection) {
-
+          alert(navigator.camera);
           var srcType = Camera.PictureSourceType.CAMERA;
           var options = setOptions(srcType);
           var func = createNewFileEntry;
