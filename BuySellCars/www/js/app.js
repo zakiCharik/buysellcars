@@ -4,8 +4,8 @@ var $$ = Dom7;
 // Framework7 App main instance
 var app  = new Framework7({
   root: '#app', // App root element
-  id: 'io.framework7.testapp', // App bundle ID
-  name: 'Framework7', // App name
+  id: 'com.buyintube.rim', // App bundle ID
+  name: 'BuySellCars', // App name
   theme: 'auto', // Automatic theme detection
   // App root data
   data: function () {
@@ -16,11 +16,35 @@ var app  = new Framework7({
       },
     };
   },
+  on: {
+    init: function () {
+      var pictureSource = navigator.camera.PictureSourceType;
+      var destinationType = navigator.camera.DestinationType;
+    }
+
+  },
   // App root methods
   methods: {
     helloWorld: function () {
       app.dialog.alert('Hello World!');
     },
+    openCamera : function(selection) {
+     
+        var srcType = Camera.PictureSourceType.CAMERA;
+        var options = setOptions(srcType);
+        var func = createNewFileEntry;
+     
+        navigator.camera.getPicture(function cameraSuccess(imageUri) {
+     
+            displayImage(imageUri);
+            // You may choose to copy the picture, save it somewhere, or upload.
+            func(imageUri);
+     
+        }, function cameraError(error) {
+            console.debug("Unable to obtain picture: " + error, "app");
+     
+        }, options);
+    }
   },
   // App routes
   routes: routes,
