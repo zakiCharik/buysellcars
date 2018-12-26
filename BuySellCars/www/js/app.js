@@ -21,7 +21,6 @@ var app  = new Framework7({
     helloWorld: function () {
       app.dialog.alert('Hello World!');
     }
-
   },
   // App routes
   routes: routes,
@@ -41,9 +40,40 @@ var mainView = app.views.create('.view-main', {
   url: '/'
 });
 
+
+// ----------------------------------------------------------------
+// ----------------------------------------------------------------
+var load = function (){
+      // Simulate Ajax Request
+      app.request({
+        url: 'http://localhost:3005/ads',
+        method: "GET",
+        dataType: 'json',
+        headers: {
+          "Access-Control-Allow-Origin": "*",
+          // "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept"          
+        },
+        crossDomain: true,
+        beforeSend: function(xhr) {
+            xhr.setRequestHeader("Access-Control-Allow-Origin", "*");
+            console.log(xhr);
+        },
+        success: function(res) {
+            console.log(res);
+        },
+        error: function(xhr) {
+            console.log('error');
+            console.log(xhr);
+        }
+    });
+
+};
+load();
+// ----------------------------------------------------------------
+// ----------------------------------------------------------------
+// ----------------------------------------------------------------
 $$('.video1').on('ready', function (e) {
   window.InAppYouTube.openVideo('iRusbYIyRNI', {fullscreen: true});
-
 });
 
 $$('.clicked-ad').on('click', function (e) {
