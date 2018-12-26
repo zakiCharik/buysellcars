@@ -25,9 +25,18 @@
   <link rel="stylesheet" href="css/icons.css">
   <link rel="stylesheet" href="css/app.css">
   <style type="text/css">
-  
+    .form-search{
+      border: 1px #7b7979 solid;
+      margin: 8px 0px 8px 9px;
+      padding: 6px;
+      width: 80% !important;
+
+    }
     .list.no-hairlines-md.search > ul > li > .item-content.item-input > .item-inner >.item-label{
       color: black;
+      font-size: 22px;
+      padding: 6px;
+      line-height: 1;
     }
     .hide{
       display: none;
@@ -167,7 +176,7 @@
                           <i class="material-icons">art_track</i>
                           Catégorie
                       </div>
-                      <div class="item-input-wrap">
+                      <div class="item-input-wrap form-search ">
                         <select>
                           <option>Voitures</option>
                           <option>Motos</option>
@@ -188,7 +197,7 @@
                   <div class="item-content item-input">
                     <div class="item-inner">
                       <div class="item-title item-label"><i class="material-icons">place</i> Ville</div>
-                      <div class="item-input-wrap">
+                      <div class="item-input-wrap form-search">
                         <input type="text" placeholder="Your location"/>
                       </div>
                     </div>
@@ -198,7 +207,7 @@
                   <div class="item-content item-input">
                     <div class="item-inner">
                       <div class="item-title item-label"><i class="material-icons">add</i> Marque</div>
-                      <div class="item-input-wrap">
+                      <div class="item-input-wrap form-search">
                         <select>
                           <option>Voitures</option>
                           <option>Motos</option>
@@ -221,7 +230,7 @@
                       <div class="item-title item-label">
                         <i class="material-icons">local_gas_station</i>
                         Carburant</div>
-                      <div class="item-input-wrap">
+                      <div class="item-input-wrap form-search">
                         <select>
                           <option>Diesel</option>
                           <option>Essence</option>
@@ -239,7 +248,7 @@
                           <i class="material-icons">slow_motion_video</i> 
                           Km
                       </div>
-                      <div class="item-input-wrap">
+                      <div class="item-input-wrap form-search">
                         <input type="number" placeholder="Kilométrage"/>
                       </div>
                     </div>
@@ -252,7 +261,7 @@
                           <i class="f7-icons">calendar</i>
                           Année modèle
                       </div>
-                      <div class="item-input-wrap">
+                      <div class="item-input-wrap form-search">
                         <input type="number" placeholder="Kilométrage"/>
                       </div>
                     </div>
@@ -262,7 +271,7 @@
                   <div class="item-content item-input">
                     <div class="item-inner">
                       <div class="item-title item-label">Puissance Fiscal</div>
-                      <div class="item-input-wrap">
+                      <div class="item-input-wrap form-search">
                         <select>
                           <option>4-41</option>
                           <option>48 et plus</option>
@@ -278,7 +287,7 @@
                         <i class="material-icons">attach_money</i>
                         Prix
                       </div>
-                      <div class="item-input-wrap">
+                      <div class="item-input-wrap form-search">
                         <input type="number" placeholder="Min"/>
                         <input type="number" placeholder="Max"/>
                       </div>

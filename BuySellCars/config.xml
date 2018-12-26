@@ -105,6 +105,9 @@
     <allow-intent href="sms:*" />
     <allow-intent href="mailto:*" />
     <allow-intent href="geo:*" />
+    <allow-intent href="*youtube*" />
+    <allow-intent href="*ytimg*" />
+    <allow-intent href="*youtube-nocookie*" />
     <allow-navigation href="*youtube*" />
     <allow-navigation href="*ytimg*" />
     <allow-navigation href="*youtube-nocookie*" />
