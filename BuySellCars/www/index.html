@@ -455,7 +455,7 @@
                     </video>
  -->
                     <!-- 1. The <iframe> (and video player) will replace this <div> tag. -->
-                    <div id="player"></div>
+                    <div onload="loadVideo(iRusbYIyRNI);"></div>
                     <div class="">
                        <div class="row gp-btns" >
                         <a href="" class="button button-raised button-round" style="color: orange">
@@ -763,47 +763,24 @@
 
     
   <script type="text/javascript">
-      // 2. This code loads the IFrame Player API code asynchronously.
-      var tag = document.createElement('script');
 
-      tag.src = "https://www.youtube.com/iframe_api";
-      var firstScriptTag = document.getElementsByTagName('script')[0];
-      firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-
-      // 3. This function creates an <iframe> (and YouTube player)
-      //    after the API code downloads.
-      var player;
-      function onYouTubeIframeAPIReady() {
-        player = new YT.Player('player', {
-          height: '170',
-          width: '100%',
-          videoId: 'M7lc1UVf-VE',
-          events: {
-            'onReady': onPlayerReady,
-            'onStateChange': onPlayerStateChange
-          }
-        });
-      }
-
-      // 4. The API will call this function when the video player is ready.
-      function onPlayerReady(event) {
-        event.target.playVideo();
-      }
-
-      // 5. The API calls this function when the player's state changes.
-      //    The function indicates that when playing a video (state=1),
-      //    the player should play for six seconds and then stop.
-      var done = false;
-      function onPlayerStateChange(event) {
-        if (event.data == YT.PlayerState.PLAYING && !done) {
-          setTimeout(stopVideo, 6000);
-          done = true;
+      // device APIs are available
+      function loadVideo(videoId) {
+        // Now safe to use device APIs
+        try {
+          window.InAppYouTube.openVideo(videoId, {
+            fullscreen: false
+          }, function(result) {
+            // console.log(JSON.stringify(result));
+          }, function(reason) {
+            // console.log(reason);
+          });
+        } catch(e) {
+          // Exception!
         }
       }
-      function stopVideo() {
-        player.stopVideo();
-      }
-    //Call function
+
+      //Call function
       var makeCall = function( number){
         window.plugins.CallNumber.callNumber(onSuccess, onError, number, null);
       }

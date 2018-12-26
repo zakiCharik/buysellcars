@@ -385,6 +385,15 @@ module.exports = [
     "clobbers": [
       "call"
     ]
+  },
+  {
+    "id": "cordova-plugin-in-app-youtube.plugin",
+    "file": "plugins/cordova-plugin-in-app-youtube/www/plugin.js",
+    "pluginId": "cordova-plugin-in-app-youtube",
+    "clobbers": [
+      "InAppYouTube"
+    ],
+    "runs": true
   }
 ];
 module.exports.metadata = 
@@ -402,7 +411,8 @@ module.exports.metadata =
   "cordova-plugin-media-capture": "1.4.3",
   "cordova-plugin-network-information": "1.3.4",
   "cordova-plugin-vibration": "2.1.6",
-  "cordova-plugin-call-number": "1.0.1"
+  "cordova-plugin-call-number": "1.0.1",
+  "cordova-plugin-in-app-youtube": "1.0.0"
 };
 // BOTTOM OF METADATA
 });

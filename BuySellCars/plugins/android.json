@@ -42,6 +42,9 @@
     },
     "cordova-plugin-call-number": {
       "PACKAGE_NAME": "com.buyintube.rim"
+    },
+    "cordova-plugin-in-app-youtube": {
+      "PACKAGE_NAME": "com.buyintube.rim"
     }
   },
   "dependent_plugins": {

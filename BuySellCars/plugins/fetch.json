@@ -110,5 +110,13 @@
     },
     "is_top_level": true,
     "variables": {}
+  },
+  "cordova-plugin-in-app-youtube": {
+    "source": {
+      "type": "registry",
+      "id": "https://github.com/davidefavia/cordova-plugin-in-app-youtube"
+    },
+    "is_top_level": true,
+    "variables": {}
   }
 }
