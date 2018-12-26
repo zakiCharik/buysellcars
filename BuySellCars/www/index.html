@@ -382,7 +382,7 @@
                         class="video-js vjs-default-skin"
                         controls="false"
                         width="100%" height="170" 
-                         data-setup='{ "sources": [{ "type": "video/youtube", "src": "blob:https://www.youtube.com/watch?v=iRusbYIyRNI"}] }'
+                        data-setup='{ "sources": [{ "type": "video/youtube", "src": "blob:https://www.youtube.com/watch?v=iRusbYIyRNI"}] }'
                       >
                       </video>
 
@@ -455,7 +455,7 @@
                     </video>
  -->
                     <!-- 1. The <iframe> (and video player) will replace this <div> tag. -->
-                    <div onload="loadVideo('iRusbYIyRNI');"></div>
+                    <div onload=""></div>
                     <div class="">
                        <div class="row gp-btns" >
                         <a href="" class="button button-raised button-round" style="color: orange">
@@ -768,8 +768,8 @@
       function loadVideo(videoId) {
         // Now safe to use device APIs
         try {
-          window.InAppYouTube.openVideo(videoId, {
-            fullscreen: false
+          window.plugins.InAppYouTube.openVideo(videoId, {
+            fullscreen: true
           }, function(result) {
             alert(JSON.stringify(result));
           }, function(reason) {
@@ -778,7 +778,7 @@
         } catch(e) {
           alert(e)
         }
-      }
+      }();
 
       //Call function
       var makeCall = function( number){
