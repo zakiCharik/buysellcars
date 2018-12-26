@@ -616,7 +616,7 @@
                 <div class="card-content content-ad" style="display: none;"> 
                   <div class="card-footer">
                       <i class="material-icons">attach_money</i>
-                      <i class="material-icons">chat_bubble</i>
+                      <i class="material-icons" >chat_bubble</i>
                       <i class="material-icons" style="color: green;">phone</i>
                   </div>
                   <div class="row">
@@ -771,9 +771,9 @@
           window.InAppYouTube.openVideo(videoId, {
             fullscreen: false
           }, function(result) {
-            // console.log(JSON.stringify(result));
+            alert(JSON.stringify(result));
           }, function(reason) {
-            // console.log(reason);
+            alert(reason);
           });
         } catch(e) {
           // Exception!
