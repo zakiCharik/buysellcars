@@ -30,12 +30,12 @@
           </div>
         </li>
         <p class="row" style="width: 90%;margin: 5%;">
-          <a href="#" class="col button button-big button-raised" style="height: 70px;text-align: center;padding: 10px;">
+          <a onclick="openCamera();" class="col button button-big button-raised" style="height: 70px;text-align: center;padding: 10px;">
             <i class="material-icons" style="display: inherit;">videocam</i> 
             <i class="icon f7-icons ios-only" style="display: inherit;">videocam_round_fill</i> 
             <span>Ajouter</span>
           </a>
-          <a href="#" class="col button button-big button-raised" style="height: 70px;text-align: center;padding: 10px;">
+          <a onclick="openFilePicker();" class="col button button-big button-raised" style="height: 70px;text-align: center;padding: 10px;">
             <i class="material-icons" style="display: inherit;">camera_enhance</i> 
             <span>Photo Miniature</span>
              
@@ -43,7 +43,9 @@
         </p>
 
       </ul>
-      <p class="row" style="bottom: 0px;margin-top: 60%;width: 50%;margin-left: 25%;margin-right: 25%;">
+      <img id="imageFile" style="width: 90px;height: 90px;" />
+
+      <p class="row" style="bottom: 0px;margin-top: 40%;width: 50%;margin-left: 25%;margin-right: 25%;">
         <a href="/insertad1/" class="col button button-big button-fill button-raised color-green">Coninuer</a>
       </p>
     </div>

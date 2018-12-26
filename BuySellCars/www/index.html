@@ -25,6 +25,10 @@
   <link rel="stylesheet" href="css/icons.css">
   <link rel="stylesheet" href="css/app.css">
   <style type="text/css">
+  
+    .list.no-hairlines-md.search > ul > li > .item-content.item-input > .item-inner >.item-label{
+      color: black;
+    }
     .hide{
       display: none;
     }
@@ -144,16 +148,152 @@
       </div>
     </div>
     <!-- Right panel with cover effect -->
-    <div class="panel panel-right panel-cover theme-dark">
+    <div class="panel panel-right panel-cover theme-light ">
       <div class="view">
-        <div class="page">
+        <div class="page" style="background: #fdfdfd;">
           <div class="navbar">
             <div class="navbar-inner">
-              <div class="title">Right Panel</div>
+              <div class="title">Que chercher vous</div>
             </div>
           </div>
           <div class="page-content">
-            <div class="block">Right panel content goes here</div>
+            <div class="block-title">Insérer votre recherche</div>
+            <div class="list no-hairlines-md search">
+              <ul>
+                <li>
+                  <div class="item-content item-input">
+                    <div class="item-inner">
+                      <div class="item-title item-label">
+                          <i class="material-icons">art_track</i>
+                          Catégorie
+                      </div>
+                      <div class="item-input-wrap">
+                        <select>
+                          <option>Voitures</option>
+                          <option>Motos</option>
+                          <option>Vélos</option>
+                          <option>Véhicule Professionnels</option>
+                          <option>Engins BTP</option>
+                          <option>Engins Agricole</option>
+                          <option>Remorques et Caravanes</option>
+                          <option>Camion</option>
+                          <option>Bateaux</option>
+                          <option>Autre</option>
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+                </li>
+                <li>
+                  <div class="item-content item-input">
+                    <div class="item-inner">
+                      <div class="item-title item-label"><i class="material-icons">place</i> Ville</div>
+                      <div class="item-input-wrap">
+                        <input type="text" placeholder="Your location"/>
+                      </div>
+                    </div>
+                  </div>
+                </li>
+                <li>
+                  <div class="item-content item-input">
+                    <div class="item-inner">
+                      <div class="item-title item-label"><i class="material-icons">add</i> Marque</div>
+                      <div class="item-input-wrap">
+                        <select>
+                          <option>Voitures</option>
+                          <option>Motos</option>
+                          <option>Vélos</option>
+                          <option>Véhicule Professionnels</option>
+                          <option>Engins BTP</option>
+                          <option>Engins Agricole</option>
+                          <option>Remorques et Caravanes</option>
+                          <option>Camion</option>
+                          <option>Bateaux</option>
+                          <option>Autre</option>
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+                </li>
+                <li>
+                  <div class="item-content item-input">
+                    <div class="item-inner">
+                      <div class="item-title item-label">
+                        <i class="material-icons">local_gas_station</i>
+                        Carburant</div>
+                      <div class="item-input-wrap">
+                        <select>
+                          <option>Diesel</option>
+                          <option>Essence</option>
+                          <option>Electrique</option>
+                          <option>LPG</option>
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+                </li>
+                <li>
+                  <div class="item-content item-input">
+                    <div class="item-inner">
+                      <div class="item-title item-label">
+                          <i class="material-icons">slow_motion_video</i> 
+                          Km
+                      </div>
+                      <div class="item-input-wrap">
+                        <input type="number" placeholder="Kilométrage"/>
+                      </div>
+                    </div>
+                  </div>
+                </li>
+                <li>
+                  <div class="item-content item-input">
+                    <div class="item-inner">
+                      <div class="item-title item-label">
+                          <i class="f7-icons">calendar</i>
+                          Année modèle
+                      </div>
+                      <div class="item-input-wrap">
+                        <input type="number" placeholder="Kilométrage"/>
+                      </div>
+                    </div>
+                  </div>
+                </li>
+                <li>
+                  <div class="item-content item-input">
+                    <div class="item-inner">
+                      <div class="item-title item-label">Puissance Fiscal</div>
+                      <div class="item-input-wrap">
+                        <select>
+                          <option>4-41</option>
+                          <option>48 et plus</option>
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+                </li>
+                <li>
+                  <div class="item-content item-input">
+                    <div class="item-inner">
+                      <div class="item-title item-label">
+                        <i class="material-icons">attach_money</i>
+                        Prix
+                      </div>
+                      <div class="item-input-wrap">
+                        <input type="number" placeholder="Min"/>
+                        <input type="number" placeholder="Max"/>
+                      </div>
+                    </div>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="toolbar" style="background: transparent;height: 36px;">
+              <div class="toolbar-inner row" >
+                <a class="col button button-fill color-green">Ok</a>
+                <a class="col button button-fill color-red">Effacer</a>
+              </div>
+            </div>
+
           </div>
         </div>
       </div>
@@ -300,10 +440,13 @@
               <div class="card demo-facebook-card">
                 <div class="card-content"> 
                   <div class="video-container"  width="100%" height="auto" >
-                    <video width="100%" height="auto"  style="background-color: grey;">
+<!--                     <video width="100%" height="auto"  style="background-color: grey;">
                       <source src="" type="video/mp4">
                       Your browser does not support the video tag.
                     </video>
+ -->
+                    <!-- 1. The <iframe> (and video player) will replace this <div> tag. -->
+                    <div id="player"></div>
                     <div class="">
                        <div class="row gp-btns" >
                         <a href="" class="button button-raised button-round" style="color: orange">
@@ -568,18 +711,10 @@
           
             <!-- Action save video -->
             <div class="fab fab-extended fab-center-bottom"  style="position: fixed;bottom: 10px; z-index: 10;">
-              <a onclick="openCamera();" class="">
+              <a href="/insertad/" class="">
                 <i class="icon f7-icons ios-only">videocam_round_fill</i>
                 <div class="fab-text">Save</div>
               </a>
-              <a onclick="openFilePicker();" class="">
-                <i class="icon f7-icons ios-only">videocam_round_fill</i>
-                <div class="fab-text">Save</div>
-              </a>
-              <img id="imageFile" style="
-    width: 90px;
-    height: 90px;
-" />
             </div>            
             <!-- Action save video -->
 
@@ -617,22 +752,48 @@
   crossorigin="anonymous"></script>
   <script src="js/play.js"></script>
 
-
+    
   <script type="text/javascript">
-      alert(navigator);
-      alert(navigator.permissions);
+      // 2. This code loads the IFrame Player API code asynchronously.
+      var tag = document.createElement('script');
 
-    // Clicked details
-    // $('.clicked-ad').on('click',function(){
-    //   var panel = $(this).parent().next().next();
-    //   if(!$(panel).is(':visible')){
-    //     $(panel).show();
-    //   }else{
-    //     $(panel).hide();
-    //   }
-    // });
+      tag.src = "https://www.youtube.com/iframe_api";
+      var firstScriptTag = document.getElementsByTagName('script')[0];
+      firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
+      // 3. This function creates an <iframe> (and YouTube player)
+      //    after the API code downloads.
+      var player;
+      function onYouTubeIframeAPIReady() {
+        player = new YT.Player('player', {
+          height: '170',
+          width: '100%',
+          videoId: 'M7lc1UVf-VE',
+          events: {
+            'onReady': onPlayerReady,
+            'onStateChange': onPlayerStateChange
+          }
+        });
+      }
 
+      // 4. The API will call this function when the video player is ready.
+      function onPlayerReady(event) {
+        event.target.playVideo();
+      }
+
+      // 5. The API calls this function when the player's state changes.
+      //    The function indicates that when playing a video (state=1),
+      //    the player should play for six seconds and then stop.
+      var done = false;
+      function onPlayerStateChange(event) {
+        if (event.data == YT.PlayerState.PLAYING && !done) {
+          setTimeout(stopVideo, 6000);
+          done = true;
+        }
+      }
+      function stopVideo() {
+        player.stopVideo();
+      }
     //Call function
       var makeCall = function( number){
         window.plugins.CallNumber.callNumber(onSuccess, onError, number, null);
