@@ -41,6 +41,11 @@ var mainView = app.views.create('.view-main', {
   url: '/'
 });
 
+$$('.video1').on('ready', function (e) {
+  window.InAppYouTube.openVideo('iRusbYIyRNI', {fullscreen: true});
+
+});
+
 $$('.clicked-ad').on('click', function (e) {
   var panel = $$(this).parent().next().next();
   if ($$(panel).css('display') == 'none') {
