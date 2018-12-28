@@ -63,23 +63,7 @@ var load = function (){
       // // Show Preloader
       // app.preloader.show();
       // Simulate Ajax Request
-$$.ajax({
-    url: "http://query.yahooapis.com/v1/public/yql",
-    contentType: "OPTIONS",
-    dataType : 'json',
-    crossDomain: true,
-    data: {
-        q: "select title,abstract,url from search.news where query=\"cat\"",
-        format: "json",
-        callback:function(){
-           return true;
-        }
-    },
-    success: function( response ) {
-        alert( 'ok' );
-        alert( response );
-    }
-});
+
     //   app.request({
     //     url: 'http://localhost:3005/ads',
     //     method: "GET",
