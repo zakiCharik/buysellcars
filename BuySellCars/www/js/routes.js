@@ -36,6 +36,18 @@ routes = [
     url: './pages/regles.html',
   },
   {
+    path: '/mymessages1/',
+    url: './pages/mymessages1.html',
+  },
+  {
+    path: '/myaccount/',
+    url: './pages/myaccount.html',
+  },
+  {
+    path: '/mymessages/',
+    url: './pages/mymessages.html',
+  },
+  {
     path: '/donneprive/',
     url: './pages/donneprive.html',
   },
