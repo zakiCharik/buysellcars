@@ -122,7 +122,7 @@
                 </li>
 
                 <li>
-                  <a href="/insertad/" data-view=".view-main" class="panel-close">Information</a>
+                  <a href="/info/" data-view=".view-main" class="panel-close">Information</a>
                 </li>
 
                 <li>
@@ -604,8 +604,8 @@
                 <div class="card-content content-ad" style="display: none;"> 
                   <div class="card-footer">
                       <i class="material-icons">attach_money</i>
-                      <i class="material-icons" >chat_bubble</i>
-                      <i class="material-icons" style="color: green;">phone</i>
+                      <a href="sms:00212663154995"><i class="material-icons" >chat_bubble</i></a>
+                      <a href="tel:00212663154995"><i class="material-icons" style="color: green;">phone</i></a>
                   </div>
                   <div class="row">
                     <ul class="">
@@ -638,7 +638,9 @@
               <div class="card demo-facebook-card">
                 <div class="card-content"> 
                   <div class="video-container"  width="100%" height="auto" >
-                    <iframe width="100%" height="auto"  src="https://www.youtube.com/embed/iRusbYIyRNI"></iframe>
+                <!--     <iframe width="100%" height="auto"  src="https://www.youtube.com/embed/iRusbYIyRNI"></iframe> -->
+                    <!-- 1. The <iframe> (and video player) will replace this <div> tag. -->
+                    <div id="player"></div>
                     <div class="">
                        <div class="row gp-btns" >
                         <a href="" class="button button-raised button-round" style="color: orange">
@@ -748,10 +750,57 @@
 
     
   <script type="text/javascript">
+      //youtube Call video player
+      // Load the IFrame Player API code asynchronously.
+      var tag = document.createElement('script');
+      tag.src = "https://www.youtube.com/player_api";
+      var firstScriptTag = document.getElementsByTagName('script')[0];
+      firstScriptTag.parentNode.insertBefore(tag, firstScriptTag); 
 
-
+      var player;
+      function onYouTubeIframeAPIReady() {
+        player = new YT.Player('player', {
+          height: '170',
+          width: '100%',
+          videoId: 'M7lc1UVf-VE',
+          playerVars: { 
+            'iv_load_policy': 3, 
+            'modestbranding': 1, 
+            'autoplay': 1, 
+            'rel': 0, 
+            'showinfo': 0, 
+            'controls': 0 
+          },
+          events: {
+            'onReady': onPlayerReady,
+            // 'onPlaybackQualityChange': onPlayerPlaybackQualityChange,
+            'onStateChange': onPlayerStateChange,
+            'onError': onPlayerError
+          }
+        });
+      }
           
+ // 4. The API will call this function when the video player is ready.
+      function onPlayerReady(event) {
+        event.target.playVideo();
+      }
 
+      // 5. The API calls this function when the player's state changes.
+      //    The function indicates that when playing a video (state=1),
+      //    the player should play for six seconds and then stop.
+      var done = false;
+      function onPlayerStateChange(event) {
+        if (event.data == YT.PlayerState.PLAYING && !done) {
+          setTimeout(stopVideo, 6000);
+          done = true;
+        }
+      }
+      function stopVideo() {
+        player.stopVideo();
+      }
+      function onPlayerError() {
+
+      }
 
       //Call function
       var makeCall = function( number){

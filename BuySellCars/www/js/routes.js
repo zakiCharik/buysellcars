@@ -24,6 +24,26 @@ routes = [
     url: './pages/insertad.html',
   },
   {
+    path: '/info/',
+    url: './pages/info.html',
+  },
+  {
+    path: '/apropos/',
+    url: './pages/apropos.html',
+  },
+  {
+    path: '/regles/',
+    url: './pages/regles.html',
+  },
+  {
+    path: '/donneprive/',
+    url: './pages/donneprive.html',
+  },
+  {
+    path: '/conditionofuse/',
+    url: './pages/conditionofuse.html',
+  },
+  {
     path: '/form/',
     url: './pages/form.html',
   },

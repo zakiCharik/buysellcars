@@ -29,6 +29,13 @@ var app  = new Framework7({
     leftBreakpoint: 960,
   },
 });
+// After the following setup all XHR requests will have additional 'Autorization' header
+app.request.setup({
+  headers: {
+    // "Access-Control-Allow-Origin": "*",
+    "Content-Type": "text/html"
+  }
+});
 
 // Init/Create left panel view
 var mainView = app.views.create('.view-left', {
@@ -41,34 +48,67 @@ var mainView = app.views.create('.view-main', {
 });
 
 
+// app.request.get('http://localhost:3005/ads', {   }, function (data) {
+//       // Show Preloader
+//       app.preloader.show();
+//   console.log('data',JSON.parse(data));
+
+//   console.log('Load was performed');
+//           // Hide Preloader
+//           app.preloader.hide();
+// });
 // ----------------------------------------------------------------
 // ----------------------------------------------------------------
 var load = function (){
+      // // Show Preloader
+      // app.preloader.show();
       // Simulate Ajax Request
-      app.request({
-        url: 'http://localhost:3005/ads',
-        method: "GET",
-        dataType: 'json',
-        headers: {
-          "Access-Control-Allow-Origin": "*",
-          // "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept"          
-        },
-        crossDomain: true,
-        beforeSend: function(xhr) {
-            xhr.setRequestHeader("Access-Control-Allow-Origin", "*");
-            console.log(xhr);
-        },
-        success: function(res) {
-            console.log(res);
-        },
-        error: function(xhr) {
-            console.log('error');
-            console.log(xhr);
+$$.ajax({
+    url: "http://query.yahooapis.com/v1/public/yql",
+    contentType: "OPTIONS",
+    dataType : 'json',
+    crossDomain: true,
+    data: {
+        q: "select title,abstract,url from search.news where query=\"cat\"",
+        format: "json",
+        callback:function(){
+           return true;
         }
-    });
+    },
+    success: function( response ) {
+        alert( 'ok' );
+        alert( response );
+    }
+});
+    //   app.request({
+    //     url: 'http://localhost:3005/ads',
+    //     method: "GET",
+    //     // dataType: 'json',
+    //     contentType: 'text/html',
+    //     crossDomain: false,
+    //     headers: {
+    //       // "Access-Control-Allow-Origin": '*',
+    //       "Content-Type": 'text/html'
+    //     },
+    //     beforeSend: function(xhr) {
+    //       console.log(xhr);
+    //     },
+    //     success: function(res) {
+    //       console.log(res);
+    //     },
+    //     error: function(xhr) {
+    //       console.log('error');
+    //       console.log(xhr);
+    //     }
+    // });
+      // // Hide Preloader
+      // app.preloader.hide();
 
 };
+
+
 load();
+
 // ----------------------------------------------------------------
 // ----------------------------------------------------------------
 // ----------------------------------------------------------------
