@@ -100,6 +100,30 @@ $$('.video1').on('ready', function (e) {
   window.InAppYouTube.openVideo('iRusbYIyRNI', {fullscreen: true});
 });
 
+//Capture audio START
+//Capture audio success
+function captureSuccess(mediaFiles ) { 
+    var i, path, len;
+    for (i = 0, len = mediaFiles.length; i < len; i += 1) {
+        path = mediaFiles[i].fullPath;
+
+    }  
+};
+
+// capture error callback
+var captureError = function(error) {
+    navigator.notification.alert('Error code: ' + error.code, null, 'Capture Error');
+};
+// limit capture operation to 3 media files, no longer than 10 seconds each
+var options = { limit: 3, duration: 10 };
+
+//Capture audio
+$$('.openAudio').on('click', function(){
+
+    navigator.device.capture.captureAudio(captureSuccess, captureError, options);
+});
+//Capture audio END
+
 $$('.clicked-ad').on('click', function (e) {
   var panel = $$(this).parent().next().next();
   if ($$(panel).css('display') == 'none') {
