@@ -110,7 +110,7 @@ function captureSuccess(mediaFiles ) {
         var divAudio = '<div class="message message-sent message-last message-tail">'+
                         '<div class="message-content">'+
                           '<div class="message-bubble">'+
-                            '<div class="message-text" onclick="play(\''+path+'\')">'+
+                            '<div class="message-text" onclick="play(\''+path+'\')">'+'Audio recrded'+
                             path+
                             '<audio id="errorSound" src="'+path+'" type="audio/mpeg" ></audio>'+
                             '</div></div></div></div>';
