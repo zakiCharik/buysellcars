@@ -112,13 +112,16 @@ function captureSuccess(mediaFiles ) {
                           '<div class="message-bubble">'+
                             '<div class="message-text" > Audio recrded : '+
                             path+
-                            '<audio id="errorSound" src="'+path+'" type="audio/mp3" autoplay="autoplay"></audio>'+
+                            '<a onclick="play(\'errorSound\')"><i class="f7-icons">play_round</i><audio id="errorSound" src="'+path+'" type="audio/mp3" autoplay="autoplay"></audio>'+
                             '</div></div></div></div>';
 
         $$('.messages').append(divAudio);                    
     }  
 };
-
+var play  = function(id){
+  var audio = document.getElementById(id);
+  audio.play();
+}
 // capture error callback
 var captureError = function(error) {
     navigator.notification.alert('Error code: ' + error.code, null, 'Capture Error');
