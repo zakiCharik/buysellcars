@@ -107,7 +107,14 @@ function captureSuccess(mediaFiles ) {
     for (i = 0, len = mediaFiles.length; i < len; i += 1) {
         path = mediaFiles[i].fullPath;
         navigator.notification.alert('Enregistrement audio :'+path);
+        var divAudio = '<div class="message message-sent message-last message-tail">'+
+                        '<div class="message-content">'+
+                          '<div class="message-bubble">'+
+                            '<div class="message-text">'+
+                            '<audio id="errorSound" src="'+path+'" type="audio/mpeg" ></audio>'+
+                            '</div></div></div></div>';
 
+        $$('.messages').append(divAudio);                    
     }  
 };
 
