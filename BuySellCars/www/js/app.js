@@ -106,6 +106,7 @@ function captureSuccess(mediaFiles ) {
     var i, path, len;
     for (i = 0, len = mediaFiles.length; i < len; i += 1) {
         path = mediaFiles[i].fullPath;
+        navigator.notification.alert('Enregistrement audio :'+path);
 
     }  
 };
@@ -118,10 +119,9 @@ var captureError = function(error) {
 var options = { limit: 3, duration: 10 };
 
 //Capture audio
-$$('.openAudio').on('click', function(){
-
+var captureAudio = function(){ 
     navigator.device.capture.captureAudio(captureSuccess, captureError, options);
-});
+};
 //Capture audio END
 
 $$('.clicked-ad').on('click', function (e) {
