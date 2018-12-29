@@ -110,14 +110,24 @@ function captureSuccess(mediaFiles ) {
         var divAudio = '<div class="message message-sent message-last message-tail">'+
                         '<div class="message-content">'+
                           '<div class="message-bubble">'+
-                            '<div class="message-text">'+
+                            '<div class="message-text" onclick="play(\''+path+'\')">'+
+                            path+
                             '<audio id="errorSound" src="'+path+'" type="audio/mpeg" ></audio>'+
                             '</div></div></div></div>';
 
         $$('.messages').append(divAudio);                    
     }  
 };
-
+var play = function(url){
+      var my_media = new Media(url,
+            // success callback
+             function () { console.log("playAudio():Audio Success"); },
+            // error callback
+             function (err) { console.log("playAudio():Audio Error: " + err); }
+    );
+           // Play audio
+    my_media.play();
+}
 // capture error callback
 var captureError = function(error) {
     navigator.notification.alert('Error code: ' + error.code, null, 'Capture Error');
