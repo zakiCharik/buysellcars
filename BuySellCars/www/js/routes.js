@@ -8,8 +8,20 @@ routes = [
     url: './pages/about.html',
   },
   {
+    path: '/login/',
+    url: './pages/login.html',
+  },
+  {
     path: '/insertad/',
     url: './pages/insertad.html',
+  },
+  {
+    path: '/boost/',
+    url: './pages/boost.html',
+  },
+  {
+    path: '/otherboost/',
+    url: './pages/otherboost.html',
   },
   {
     path: '/insertad1/',
@@ -34,6 +46,14 @@ routes = [
   {
     path: '/regles/',
     url: './pages/regles.html',
+  },
+  {
+    path: '/ad/',
+    url: './pages/ad.html',
+  },
+  {
+    path: '/myannonce/',
+    url: './pages/myannonce.html',
   },
   {
     path: '/mymessages1/',

@@ -48,15 +48,6 @@ var mainView = app.views.create('.view-main', {
 });
 
 
-// app.request.get('http://localhost:3005/ads', {   }, function (data) {
-//       // Show Preloader
-//       app.preloader.show();
-//   console.log('data',JSON.parse(data));
-
-//   console.log('Load was performed');
-//           // Hide Preloader
-//           app.preloader.hide();
-// });
 // ----------------------------------------------------------------
 // ----------------------------------------------------------------
 var load = function (){
@@ -144,6 +135,16 @@ $$('.clicked-ad').on('click', function (e) {
   }
 
 });
+
+var display = function(target){
+
+    var panel = $$('#'+target);
+    if ($$(panel).css('display') == 'none') {
+      $$(panel).show();
+    }else{
+      $$(panel).hide();
+    }
+};
 
 // Login Screen Demo
 $$('#my-login-screen .login-button').on('click', function () {
