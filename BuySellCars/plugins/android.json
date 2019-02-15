@@ -45,6 +45,12 @@
     },
     "cordova-plugin-in-app-youtube": {
       "PACKAGE_NAME": "com.buyintube.rim"
+    },
+    "com.bunkerpalace.cordova.YoutubeVideoPlayer": {
+      "PACKAGE_NAME": "com.buyintube.rim"
+    },
+    "cordova-plugin-whitelist": {
+      "PACKAGE_NAME": "com.buyintube.rim"
     }
   },
   "dependent_plugins": {

@@ -39,6 +39,22 @@
     <feature name="Vibration">
         <param name="android-package" value="org.apache.cordova.vibration.Vibration" />
     </feature>
+    <feature name="CallNumber">
+        <param name="android-package" value="mx.ferreyra.callnumber.CFCallNumber" />
+    </feature>
+    <feature name="InAppYouTube">
+        <param name="android-package" value="com.davidefavia.InAppYouTube" />
+        <param name="onload" value="true" />
+    </feature>
+    <feature name="Whitelist">
+        <param name="android-package" value="org.apache.cordova.whitelist.WhitelistPlugin" />
+        <param name="onload" value="true" />
+    </feature>
+    <widget>
+        <feature name="YoutubeVideoPlayer">
+            <param name="android-package" value="com.bunkerpalace.cordova.YoutubeVideoPlayer" />
+        </feature>
+    </widget>
     <name>Buy Sell Your Car</name>
     <description>
         Simple App for car advertising.
@@ -58,6 +74,16 @@
     <allow-intent href="sms:*" />
     <allow-intent href="mailto:*" />
     <allow-intent href="geo:*" />
+    <allow-intent href="*youtube*" />
+    <allow-intent href="*ytimg*" />
+    <allow-intent href="*youtube-nocookie*" />
+    <allow-navigation href="*youtube*" />
+    <allow-navigation href="*ytimg*" />
+    <allow-navigation href="*youtube-nocookie*" />
+    <allow-navigation href="https://*youtube.com/*" />
+    <allow-navigation href="https://m.youtube.com/*" />
+    <allow-navigation href="http://*/*" />
+    <allow-navigation href="https://*/*" />
     <icon density="ldpi" src="www/res/icon/android/drawable-ldpi-icon.png" />
     <icon density="mdpi" src="www/res/icon/android/drawable-mdpi-icon.png" />
     <icon density="hdpi" src="www/res/icon/android/drawable-hdpi-icon.png" />
@@ -78,14 +104,11 @@
     <splash density="port-xxxhdpi" src="www/res/screen/android/drawable-port-xxxhdpi-screen.png" />
     <allow-intent href="market:*" />
     <preference name="loglevel" value="DEBUG" />
+    <preference name="YouTubeDataApiKey" value="AIzaSyCnsSjqyThhdbwaw4KS2impc8jokuK8PmU" />
     <preference name="permissions" value="yes" />
     <preference name="DisallowOverscroll" value="true" />
     <preference name="android-minSdkVersion" value="14" />
-    <feature name="CallNumber">
-        <param name="android-package" value="mx.ferreyra.callnumber.CFCallNumber" />
-    </feature>
-    <feature name="InAppYouTube">
-        <param name="android-package" value="com.davidefavia.InAppYouTube" />
-        <param name="onload" value="true" />
-    </feature>
+    <preference name="AllowInlineMediaPlayback" value="true" />
+    <preference name="AndroidPersistentFileLocation" value="Compatibility" />
+    <preference name="MediaPlaybackRequiresUserAction" value="false" />
 </widget>

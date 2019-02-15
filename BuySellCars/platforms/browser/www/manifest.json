@@ -1,0 +1,12 @@
+{
+  "background_color": "#FFF",
+  "display": "standalone",
+  "name": "Buy Sell Your Car",
+  "short_name": "Buy Sell Your Car",
+  "version": "com.buyintube.rim",
+  "description": "Simple App for car advertising.",
+  "author": "BuyInTube Team",
+  "icons": [],
+  "start_url": "index.html",
+  "theme_color": "#2196f3"
+}

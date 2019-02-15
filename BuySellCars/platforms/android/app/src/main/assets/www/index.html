@@ -11,7 +11,7 @@
       * Disables use of inline scripts in order to mitigate risk of XSS vulnerabilities. To change this:
           * Enable inline JS: add 'unsafe-inline' to default-src
   -->
-  <meta http-equiv="Content-Security-Policy" content="default-src * gap://ready 'self' 'unsafe-inline' 'unsafe-eval' data: gap: content: blob:">
+  <meta http-equiv="Content-Security-Policy" content="default-src * 'self' 'unsafe-inline' 'unsafe-eval' data: gap: content: blob:; media-src *">
 
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui, viewport-fit=cover">
 
@@ -24,25 +24,45 @@
   <link rel="stylesheet" href="framework7/css/framework7.min.css">
   <link rel="stylesheet" href="css/icons.css">
   <link rel="stylesheet" href="css/app.css">
+  <link href="https://vjs.zencdn.net/7.4.1/video-js.css" rel="stylesheet">
   <style type="text/css">
+    .form-search{
+      border: 1px #7b7979 solid;
+      margin: 8px 0px 8px 9px;
+      padding: 6px;
+      width: 80% !important;
+
+    }
+    .list.no-hairlines-md.search > ul > li > .item-content.item-input > .item-inner >.item-label{
+      color: black;
+      font-size: 22px;
+      padding: 6px;
+      line-height: 1;
+    }
     .hide{
       display: none;
     }
     ul {
       list-style: none;
     }
+    .row.gp-btns a.button{
+      min-width: 35px !important;
+    }
     .row.gp-btns a{
       background: #505050;
-      border: 1px solid #505050;
-      line-height: 0px !important; 
-      width: 40px !important; 
-      height: 40px !important; 
-      padding: 7px;      
-      margin-bottom: 5px;
+      border: 2px solid #505050;
+      line-height: 1px !important;
+      width: 29px;
+      height: 35px !important;
+      padding: 2px 2px 2px 1px;
+      text-align: center;
+      margin-bottom: 7px;
+      border-radius: 148px !important;
+      z-index: 2100;
     }
     .gp-btns{
       float: right;
-      display: inline;
+      display: inline-grid;
       position: absolute;
       top: 0px;
       right: 0px;
@@ -64,9 +84,8 @@
   </style>
   <link rel="stylesheet" href="https://unpkg.com/video.js/dist/video-js.min.css">
   <script src="//unpkg.com/video.js/dist/video.min.js"></script>
-  <script src="//src.litix.io/videojs/2.1.0/videojs-mux.js"></script>
 </head>
-<body>
+<body >
   <div id="app" class="framework7-root">
     <!-- Status bar overlay for fullscreen mode-->
     <div class="statusbar"></div>
@@ -74,12 +93,23 @@
     <div class="panel panel-left panel-reveal">
       <div class="view view-left">
         <div class="page">
-          <div class="navbar">
-            <div class="navbar-inner sliding">
-              <div class="title">Menu Panel</div>
+          <div class="navbar" style="height: 120px; background: transparent;">
+            <div class="navbar-inner " style="display: inline;">
+              <div class="" > 
+                <img src="/img/logo.svg" style="z-index: 100; width: 90px; padding: 10px;">
+              </div>
+              <div class="" style="position: absolute;width: 100%;height: 120px;top: 0;left: 0;"> 
+                <iframe style="width: 100%;height: 120px;"  src=""></iframe>
+              </div>
+              <div class="" style="position: absolute;bottom: 0;left: 8px;"> 
+                <div class="chip">
+                  <div class="chip-media bg-color-pink">J</div>
+                  <div class="chip-label" style="color: white;">Jennifer</div>
+                </div>
+              </div>
             </div>
           </div>
-          <div class="page-content">
+          <div class="page-content" style="padding-top: 122px">
             <div class="list links-list ">
               <ul>
                 <li>
@@ -87,23 +117,19 @@
                 </li>
 
                 <li>
-                  <a href="/insertad/" data-view=".view-main" class="panel-close">Booster une Annonce</a>
+                  <a href="/boost/" data-view=".view-main" class="panel-close">Booster une Annonce</a>
                 </li>
 
                 <li>
-                  <a href="/insertad/" data-view=".view-main" class="panel-close">Mes Annonce</a>
+                  <a href="/myannonce/" data-view=".view-main" class="panel-close">Mes Annonce</a>
                 </li>
 
                 <li>
-                  <a href="/insertad/" data-view=".view-main" class="panel-close">Mes Messages</a>
+                  <a href="/mymessages/" data-view=".view-main" class="panel-close">Mes Messages</a>
                 </li>
 
                 <li>
-                  <a href="/insertad/" data-view=".view-main" class="panel-close">Nos Contactez</a>
-                </li>
-
-                <li>
-                  <a href="/insertad/" data-view=".view-main" class="panel-close">Information</a>
+                  <a href="/info/" data-view=".view-main" class="panel-close">Information</a>
                 </li>
 
                 <li>
@@ -112,6 +138,21 @@
               </ul>
             </div>
 
+            <div class="block-title ">Nos Contactez</div>
+            <div class="block">
+
+              <p class="row">
+                <a href="#" class="col button">
+                  <img src="/img/fb.png" style="margin-top:  3px;width : 30px;height: 30px;">
+                </a>
+                <a href="#" class="col button ">
+                  <img src="/img/gmail.png" style="width : 36px; height: 36px;">
+                </a>
+                <a href="#" class="col button ">
+                  <img src="/img/whatapp.png" style="width : 36px; height: 36px;">
+                </a>
+              </p>              
+            </div>
             <div class="block-title hide">Left View Navigation</div>
             <div class="list links-list hide">
               <ul>
@@ -138,16 +179,152 @@
       </div>
     </div>
     <!-- Right panel with cover effect -->
-    <div class="panel panel-right panel-cover theme-dark">
+    <div class="panel panel-right panel-cover theme-light ">
       <div class="view">
-        <div class="page">
+        <div class="page" style="background: #fdfdfd;">
           <div class="navbar">
             <div class="navbar-inner">
-              <div class="title">Right Panel</div>
+              <div class="title">Que chercher vous</div>
             </div>
           </div>
           <div class="page-content">
-            <div class="block">Right panel content goes here</div>
+            <div class="block-title">Insérer votre recherche</div>
+            <div class="list no-hairlines-md search">
+              <ul>
+                <li>
+                  <div class="item-content item-input">
+                    <div class="item-inner">
+                      <div class="item-title item-label">
+                          <i class="material-icons">art_track</i>
+                          Catégorie
+                      </div>
+                      <div class="item-input-wrap form-search ">
+                        <select>
+                          <option>Voitures</option>
+                          <option>Motos</option>
+                          <option>Vélos</option>
+                          <option>Véhicule Professionnels</option>
+                          <option>Engins BTP</option>
+                          <option>Engins Agricole</option>
+                          <option>Remorques et Caravanes</option>
+                          <option>Camion</option>
+                          <option>Bateaux</option>
+                          <option>Autre</option>
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+                </li>
+                <li>
+                  <div class="item-content item-input">
+                    <div class="item-inner">
+                      <div class="item-title item-label"><i class="material-icons">place</i> Ville</div>
+                      <div class="item-input-wrap form-search">
+                        <input type="text" placeholder="Your location"/>
+                      </div>
+                    </div>
+                  </div>
+                </li>
+                <li>
+                  <div class="item-content item-input">
+                    <div class="item-inner">
+                      <div class="item-title item-label"><i class="material-icons">add</i> Marque</div>
+                      <div class="item-input-wrap form-search">
+                        <select>
+                          <option>Voitures</option>
+                          <option>Motos</option>
+                          <option>Vélos</option>
+                          <option>Véhicule Professionnels</option>
+                          <option>Engins BTP</option>
+                          <option>Engins Agricole</option>
+                          <option>Remorques et Caravanes</option>
+                          <option>Camion</option>
+                          <option>Bateaux</option>
+                          <option>Autre</option>
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+                </li>
+                <li>
+                  <div class="item-content item-input">
+                    <div class="item-inner">
+                      <div class="item-title item-label">
+                        <i class="material-icons">local_gas_station</i>
+                        Carburant</div>
+                      <div class="item-input-wrap form-search">
+                        <select>
+                          <option>Diesel</option>
+                          <option>Essence</option>
+                          <option>Electrique</option>
+                          <option>LPG</option>
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+                </li>
+                <li>
+                  <div class="item-content item-input">
+                    <div class="item-inner">
+                      <div class="item-title item-label">
+                          <i class="material-icons">slow_motion_video</i> 
+                          Km
+                      </div>
+                      <div class="item-input-wrap form-search">
+                        <input type="number" placeholder="Kilométrage"/>
+                      </div>
+                    </div>
+                  </div>
+                </li>
+                <li>
+                  <div class="item-content item-input">
+                    <div class="item-inner">
+                      <div class="item-title item-label">
+                          <i class="f7-icons">calendar</i>
+                          Année modèle
+                      </div>
+                      <div class="item-input-wrap form-search">
+                        <input type="number" placeholder="Kilométrage"/>
+                      </div>
+                    </div>
+                  </div>
+                </li>
+                <li>
+                  <div class="item-content item-input">
+                    <div class="item-inner">
+                      <div class="item-title item-label">Puissance Fiscal</div>
+                      <div class="item-input-wrap form-search">
+                        <select>
+                          <option>4-41</option>
+                          <option>48 et plus</option>
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+                </li>
+                <li>
+                  <div class="item-content item-input">
+                    <div class="item-inner">
+                      <div class="item-title item-label">
+                        <i class="material-icons">attach_money</i>
+                        Prix
+                      </div>
+                      <div class="item-input-wrap form-search">
+                        <input type="number" placeholder="Min"/>
+                        <input type="number" placeholder="Max"/>
+                      </div>
+                    </div>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="toolbar" style="background: transparent;height: 36px;">
+              <div class="toolbar-inner row" >
+                <a class="col button button-fill color-green">Ok</a>
+                <a class="col button button-fill color-red">Effacer</a>
+              </div>
+            </div>
+
           </div>
         </div>
       </div>
@@ -166,18 +343,18 @@
                 <i class="icon material-icons md-only">menu</i>
               </a>
             </div>
-            <div class="title sliding">
-              Logo
-              <span class="subtitle">App Name</span>
+            <div class="title sliding" style="margin: 0px;">
+              <img src="/img/logo.svg" style="width: 73px;">
+              <span class="subtitle">VIDOR - Achat&Vente de véhicule</span>
             </div>
             <div class="right">
-              <a href="#" class="link icon-only" data-panel="">
+              <a data-view=".view-main"  href="/myaccount/" class=" icon-only" style="width: 34px;">
                 <i class="icon f7-icons ios-only">person_fill</i>
                 <i class="icon material-icons md-only">person_fill</i>
               </a>
               <a href="#" class="link icon-only panel-open" data-panel="right">
-                <i class="icon f7-icons ios-only">search</i>
-                <i class="icon material-icons md-only">search</i>
+                <i class=" f7-icons ios-only">search</i>
+                <i class=" material-icons ">search</i>
               </a>
             </div>
           </div>
@@ -190,7 +367,7 @@
             <button class="button" style="border: none;"><i class="material-icons">add_location</i></button>
             <button class="button" style="border: none;"><i class="icon f7-icons ">heart</i></button>
             <button class="button" style="border: none;"><i class="icon f7-icons ">start</i></button>
-            <button class="button" style="border: none;"><i class="icon f7-icons ">chat</i></button>
+            <button class="button" style="border: none;"> <a href="/mymessages/"><i class="icon f7-icons "><span class="badge color-red">1</span>chat</i></a></button>
             </div>
           </div>          
           <!-- Toolbar-->
@@ -209,360 +386,98 @@
         <!-- Scrollable page content-->
         <div class="page-content" style="margin-top: 15px;">
             <div class="block">
-              <!-- Advertising content-->
-              <div class="card demo-facebook-card">
-                <div class="card-content"> 
-                  <div class="video-container"  width="100%" height="auto" >
-<!--                     <video width="100%" height="auto"  style="">
-                      <source src="https://www.youtube.com/embed/wyVM1evRxNw?modestbranding=1&autohide=1&showinfo=0&controls=0" type="text/html">
-                      Your browser does not support the video tag.
-                    </video> -->
 
-<!--                     <video class="video-container video-stream" id="player1" preload="none">
-                        <source type="video/youtube" src="http://www.youtube.com/watch?v=nOEw9iiopwI" />
-                    </video>
- -->
-                    <video
-                        id="vid1"
-                        class="video-js vjs-default-skin"
-                        controls="false"
-                        width="100%" height="170" 
-                         data-setup='{ "sources": [{ "type": "video/youtube", "src": "blob:https://www.youtube.com/watch?v=iRusbYIyRNI"}] }'
-                      >
-                      </video>
+              <div class="_list-view" id="videoWrapper">
+                <script id="videoTemplate" type="text/template7">
+                  {{#each annonce}}
 
-                    <div class="">
-                       <div class="row gp-btns" >
-                        <a href="" class="button button-raised button-round" style="color: orange">
-                          <i class="material-icons">star</i>
-                        </a>
-                        <a href="" class="button button-raised button-round" style="color: red">
-                          <i class="material-icons">favorite</i>
-                        </a>
-                        <a href="" onclick="makeCall('00212663154995');" class=" button button-raised button-round" style="color: green">
-                          <i class="material-icons">local_phone</i>
-                        </a>
+                    <div class="card demo-facebook-card">
+                      <div class="card-content"> 
+                        <div class="video-container"  width="100%" height="auto" >
+
+                          <!--div id="player-{{id}}" data-url="{{video}}" class="videoArea"></div-->
+                          
+                          <video 
+                            id="player-{{id}}" 
+                            class='video-js' 
+                            controls 
+                            crossorigin 
+                            preload='auto' 
+                            width='100%' 
+                            data-youtube-id="{{video}}" 
+                            height='170'
+                            data-setup='{}'>
+                            <source src='https://youtube.com/watch?v={{video}}' type="text/html" />
+                          </video>           
+
+                          <div class="">
+                             <div class="row gp-btns" >
+                              <a href="" class="button button-raised button-round" style="color: orange">
+                                <i class="material-icons">star</i>
+                              </a>
+                              <a href="" class="button button-raised button-round" style="color: red">
+                                <i class="material-icons">favorite</i>
+                              </a>
+                              <a  onclick="makeCall('{{phone}}');" class="button  button-raised button-round" style="color: green">
+                                <i class="material-icons">local_phone</i>
+                              </a>
+                            </div>
+                            <a href="" class="" onclick="_vplayer.requestFullscreen()" style="border: none; color: white; position: absolute;left: 0px;bottom: 10px;">
+                              <i class="material-icons">fullscreen</i>
+                            </a>
+                          </div>
+                        </div>
                       </div>
-                      <a href="" class="button button-raised button-round" onclick="_vplayer.requestFullscreen()" style="border: none; color: white; position: absolute;left: 0px;bottom: 10px;">
-                        <i class="material-icons">fullscreen</i>
-                      </a>
-
-                    </div>
-                  </div>
-                </div>
-                <div class="card-header">
-                    <div class="chip">
-                        <div class="chip-media"><img src="http://lorempixel.com/100/100/people/9/"></div>
-                        <div class="chip-label">Jane Doe</div>
-                    </div>                  
-                  <div class="demo-facebook-name clicked-ad link">NISAN XX</div>                
-                </div>
-                <div class="card-header" style="font-size: 14px; text-align: left;">
-                  <i class="material-icons">person_pin_circle</i> <div class="demo-facebook-date">Berrechid</div>
-                  <div class="demo-facebook-date">Today 3:47 PM</div>
-                  <div class="demo-facebook-name" style="font-size: 17px;font-weight: bold;">100 000 DHS</div>
-                </div>
-                <div class="card-content content-ad" style="display: none;"> 
-                  <div class="row">
-                    <ul class="">
-                      <li class="">Description : xx</li>
-                      <li class="">Annonceur : xx</li>
-                      <li class="">Catégorie : xx</li>
-                      <li class="">Année-Modéle : xxxx</li>
-                      <li class="">Dédouanement : xxxx</li>
-                      <li class="">Kilométrage : .00 KM</li>
-                      <li class="">Marque : .00 KM</li>
-                      <li class="">Carburant : Diesel</li>
-                      <li class="">Transmission : Auto/Manuelle</li>
-                      <li class="">Modéle : xx</li>
-                      <li class="">Puissance fiscal : .00 CH</li>
-                      <li class="">Vignette : .00 DHS</li>
-                      <li class="">Vignette d'année en cours : Oui/Non</li>
-                      <li class="">Consomation % : .00 </li>
-                      <li class="">Accidenté : Oui/Non</li>
-                      <li class="">Type de papier de vente : CG|Reçu|Procuration|Dépo</li>
-                    </ul>
-                  </div>
-                </div>
-                <div class="card-footer">
-                    <div class="">Carburant</div>
-                    <i class="material-icons">av_timer</i><div class="">KM</div>
-                    <div class="">.00 CH</div>
-                </div>
-              </div>
-              <!-- Advertising content-->
-              <div class="card demo-facebook-card">
-                <div class="card-content"> 
-                  <div class="video-container"  width="100%" height="auto" >
-                    <video width="100%" height="auto"  style="background-color: grey;">
-                      <source src="" type="video/mp4">
-                      Your browser does not support the video tag.
-                    </video>
-                    <div class="">
-                       <div class="row gp-btns" >
-                        <a href="" class="button button-raised button-round" style="color: orange">
-                          <i class="material-icons">star</i>
-                        </a>
-                        <a href="" class="button button-raised button-round" style="color: red">
-                          <i class="material-icons">favorite</i>
-                        </a>
-                        <a href="tel:00212661647460" class="external button button-raised button-round" style="color: green">
-                          <i class="material-icons">local_phone</i>
-                        </a>
+                      <div class="card-header">
+                          <div class="chip">
+                              <div class="chip-media"><img src="http://lorempixel.com/100/100/people/9/"></div>
+                              <div class="chip-label">{{annoncor}}</div>
+                          </div>                  
+                        <div class="demo-facebook-name clicked-ad link">{{title}}</div>                
                       </div>
-                      <a href="" class="button button-raised button-round" style="border: none; color: white; position: absolute;left: 0px;bottom: 10px;">
-                        <i class="material-icons">fullscreen</i>
-                      </a>
-
-                    </div>
-                  </div>
-                </div>
-                <div class="card-header">
-                  <div class="chip">
-                    <div class="chip-media"><img src="http://lorempixel.com/100/100/people/3/"></div>
-                    <div class="chip-label">John Doe</div>
-                  </div>                  
-                  <div class="demo-facebook-name clicked-ad link">NISAN XX</div>                
-                </div>
-                <div class="card-header" style="font-size: 14px; text-align: left;">
-                  <i class="material-icons">person_pin_circle</i> <div class="demo-facebook-date">Berrechid</div>
-                  <div class="demo-facebook-date">Today 3:47 PM</div>
-                  <div class="demo-facebook-name" style="font-size: 17px;font-weight: bold;">100 000 DHS</div>
-                </div>
-                <div class="card-content content-ad" style="display: none;"> 
-                  <div class="row">
-                    <ul class="">
-                      <li class="">Description : xx</li>
-                      <li class="">Annonceur : xx</li>
-                      <li class="">Catégorie : xx</li>
-                      <li class="">Année-Modéle : xxxx</li>
-                      <li class="">Dédouanement : xxxx</li>
-                      <li class="">Kilométrage : .00 KM</li>
-                      <li class="">Marque : .00 KM</li>
-                      <li class="">Carburant : Diesel</li>
-                      <li class="">Transmission : Auto/Manuelle</li>
-                      <li class="">Modéle : xx</li>
-                      <li class="">Puissance fiscal : .00 CH</li>
-                      <li class="">Vignette : .00 DHS</li>
-                      <li class="">Vignette d'année en cours : Oui/Non</li>
-                      <li class="">Consomation % : .00 </li>
-                      <li class="">Accidenté : Oui/Non</li>
-                      <li class="">Type de papier de vente : CG|Reçu|Procuration|Dépo</li>
-                    </ul>
-                  </div>
-                </div>
-                <div class="card-footer">
-                    <div class="">Carburant</div>
-                    <i class="material-icons">av_timer</i><div class="">KM</div>
-                    <div class="">.00 CH</div>
-                </div>
-              </div>
-              <!-- Advertising content-->
-              <div class="card demo-facebook-card">
-                <div class="card-content"> 
-                  <div class="video-container"  width="100%" height="auto" >
-                    <video width="100%" height="auto"  style="background-color: grey;">
-                      <source src="" type="video/mp4">
-                      Your browser does not support the video tag.
-                    </video>
-                    <div class="">
-                       <div class="row gp-btns" >
-                        <a href="" class="button button-raised button-round" style="color: orange">
-                          <i class="material-icons">star</i>
-                        </a>
-                        <a href="" class="button button-raised button-round" style="color: red">
-                          <i class="material-icons">favorite</i>
-                        </a>
-                        <a href="" class="button button-raised button-round" style="color: green">
-                          <i class="material-icons">local_phone</i>
-                        </a>
+                      <div class="card-header" style="font-size: 14px; text-align: left;">
+                        <i class="material-icons">person_pin_circle</i> <div class="demo-facebook-date">{{emplacement}}</div>
+                        <div class="demo-facebook-date">Today 3:47 PM</div>
+                        <div class="demo-facebook-name" style="font-size: 17px;font-weight: bold;">{{prix}} DHS</div>
                       </div>
-                      <a href="" class="button button-raised button-round" style="border: none; color: white; position: absolute;left: 0px;bottom: 10px;">
-                        <i class="material-icons">fullscreen</i>
-                      </a>
-
-                    </div>
-                  </div>
-                </div>
-                <div class="card-header">
-                  <div class="demo-facebook-name clicked-ad link">NISAN XX</div>                
-                </div>
-                <div class="card-header" style="font-size: 14px; text-align: left;">
-                  <i class="material-icons">person_pin_circle</i> <div class="demo-facebook-date">Berrechid</div>
-                  <div class="demo-facebook-date">Today 3:47 PM</div>
-                  <div class="demo-facebook-name" style="font-size: 17px;font-weight: bold;">100 000 DHS</div>
-                </div>
-                <div class="card-content content-ad" style="display: none;"> 
-                  <div class="row">
-                    <ul class="">
-                      <li class="">Description : xx</li>
-                      <li class="">Annonceur : xx</li>
-                      <li class="">Catégorie : xx</li>
-                      <li class="">Année-Modéle : xxxx</li>
-                      <li class="">Dédouanement : xxxx</li>
-                      <li class="">Kilométrage : .00 KM</li>
-                      <li class="">Marque : .00 KM</li>
-                      <li class="">Carburant : Diesel</li>
-                      <li class="">Transmission : Auto/Manuelle</li>
-                      <li class="">Modéle : xx</li>
-                      <li class="">Puissance fiscal : .00 CH</li>
-                      <li class="">Vignette : .00 DHS</li>
-                      <li class="">Vignette d'année en cours : Oui/Non</li>
-                      <li class="">Consomation % : .00 </li>
-                      <li class="">Accidenté : Oui/Non</li>
-                      <li class="">Type de papier de vente : CG|Reçu|Procuration|Dépo</li>
-                    </ul>
-                  </div>
-                </div>
-                <div class="card-footer">
-                    <div class="">Carburant</div>
-                    <i class="material-icons">av_timer</i><div class="">KM</div>
-                    <div class="">.00 CH</div>
-                </div>
-              </div>
-              <!-- Advertising content-->
-              <div class="card demo-facebook-card">
-                <div class="card-content"> 
-                  <div class="video-container"  width="100%" height="auto" >
-                    <video width="100%" height="auto"  style="background-color: grey;">
-                      <source src="" type="video/mp4">
-                      Your browser does not support the video tag.
-                    </video>
-                    <div class="">
-                       <div class="row gp-btns" >
-                        <a href="" class="button button-raised button-round" style="color: orange">
-                          <i class="material-icons">star</i>
-                        </a>
-                        <a href="" class="button button-raised button-round" style="color: red">
-                          <i class="material-icons">favorite</i>
-                        </a>
-                        <a href="" class="button button-raised button-round" style="color: green">
-                          <i class="material-icons">local_phone</i>
-                        </a>
+                      <div class="card-content content-ad" style="display: none;"> 
+                        <div class="row">
+                          <ul class="">
+                            <li class="">Description : {{description}}</li>
+                            <li class="">Annonceur : {{annoncor}}</li>
+                            <li class="">Catégorie : {{model}}</li>
+                            <li class="">Année-Modéle : {{model}}</li>
+                            <li class="">Dédouanement : {{dedouanementanne}}</li>
+                            <li class="">Kilométrage : {{kilometrage}} KM</li>
+                            <li class="">Marque : {{marque}} KM</li>
+                            <li class="">Carburant : {{carburant}}</li>
+                            <li class="">Transmission : {{transmission}}</li>
+                            <li class="">Modéle : {{model}}</li>
+                            <li class="">Puissance fiscal : {{puissancefiscal}} CH</li>
+                            <li class="">Vignette : {{prixvignette}} DHS</li>
+                            <li class="">Vignette année en cours : {{descripvignetteannencourstion}}</li>
+                            <li class="">Consomation % : {{consomation}} </li>
+                            <li class="">Accidenté : {{accidente}}</li>
+                            <li class="">Type de papier de vente : {{typepapierdevente}}</li>
+                          </ul>
+                        </div>
                       </div>
-                      <a href="" class="button button-raised button-round" style="border: none; color: white; position: absolute;left: 0px;bottom: 10px;">
-                        <i class="material-icons">fullscreen</i>
-                      </a>
-
-                    </div>
-                  </div>
-                </div>
-                <div class="card-header">
-                  <div class="demo-facebook-name clicked-ad link">NISAN XX</div>                
-                </div>
-                <div class="card-header" style="font-size: 14px; text-align: left;">
-                  <i class="material-icons">person_pin_circle</i> <div class="demo-facebook-date">Berrechid</div>
-                  <div class="demo-facebook-date">Today 3:47 PM</div>
-                  <div class="demo-facebook-name" style="font-size: 17px;font-weight: bold;">100 000 DHS</div>
-                </div>
-                <div class="card-content content-ad" style="display: none;"> 
-                  <div class="card-footer">
-                      <i class="material-icons">attach_money</i>
-                      <i class="material-icons">chat_bubble</i>
-                      <i class="material-icons" style="color: green;">phone</i>
-                  </div>
-                  <div class="row">
-                    <ul class="">
-                      <li class="">Description : xx</li>
-                      <li class="">Annonceur : xx</li>
-                      <li class="">Catégorie : xx</li>
-                      <li class="">Année-Modéle : xxxx</li>
-                      <li class="">Dédouanement : xxxx</li>
-                      <li class="">Kilométrage : .00 KM</li>
-                      <li class="">Marque : .00 KM</li>
-                      <li class="">Carburant : Diesel</li>
-                      <li class="">Transmission : Auto/Manuelle</li>
-                      <li class="">Modéle : xx</li>
-                      <li class="">Puissance fiscal : .00 CH</li>
-                      <li class="">Vignette : .00 DHS</li>
-                      <li class="">Vignette d'année en cours : Oui/Non</li>
-                      <li class="">Consomation % : .00 </li>
-                      <li class="">Accidenté : Oui/Non</li>
-                      <li class="">Type de papier de vente : CG|Reçu|Procuration|Dépo</li>
-                    </ul>
-                  </div>
-                </div>
-                <div class="card-footer">
-                    <div class="">Carburant</div>
-                    <i class="material-icons">av_timer</i><div class="">KM</div>
-                    <div class="">.00 CH</div>
-                </div>
-              </div>
-              <!-- Advertising content-->
-              <div class="card demo-facebook-card">
-                <div class="card-content"> 
-                  <div class="video-container"  width="100%" height="auto" >
-                    <video width="100%" height="auto"  style="background-color: grey;">
-                      <source src="" type="video/mp4">
-                      Your browser does not support the video tag.
-                    </video>
-                    <div class="">
-                       <div class="row gp-btns" >
-                        <a href="" class="button button-raised button-round" style="color: orange">
-                          <i class="material-icons">star</i>
-                        </a>
-                        <a href="" class="button button-raised button-round" style="color: red">
-                          <i class="material-icons">favorite</i>
-                        </a>
-                        <a href="" class="button button-raised button-round" style="color: green">
-                          <i class="material-icons">local_phone</i>
-                        </a>
+                      <div class="card-footer">
+                          <div class="">{{carburant}}</div>
+                          <i class="material-icons">av_timer</i><div class="">{{kilometrage}} KM</div>
+                          <div class="">{{puissancefiscal}} CH</div>
                       </div>
-                      <a href="" class="button button-raised button-round" style="border: none; color: white; position: absolute;left: 0px;bottom: 10px;">
-                        <i class="material-icons">fullscreen</i>
-                      </a>
-
                     </div>
-                  </div>
-                </div>
-                <div class="card-header">
-                  <div class="demo-facebook-name clicked-ad link">NISAN XX</div>                
-                </div>
-                <div class="card-header" style="font-size: 14px; text-align: left;">
-                  <i class="material-icons">person_pin_circle</i> <div class="demo-facebook-date">Berrechid</div>
-                  <div class="demo-facebook-date">Today 3:47 PM</div>
-                  <div class="demo-facebook-name" style="font-size: 17px;font-weight: bold;">100 000 DHS</div>
-                </div>
-                <div class="card-content content-ad" style="display: none;"> 
-                  <div class="card-footer">
-                      <i class="material-icons">attach_money</i>
-                      <i class="material-icons">chat_bubble</i>
-                      <i class="material-icons" style="color: green;">phone</i>
-                  </div>
-                  <div class="row">
-                    <ul class="">
-                      <li class="">Description : xx</li>
-                      <li class="">Annonceur : xx</li>
-                      <li class="">Catégorie : xx</li>
-                      <li class="">Année-Modéle : xxxx</li>
-                      <li class="">Dédouanement : xxxx</li>
-                      <li class="">Kilométrage : .00 KM</li>
-                      <li class="">Marque : .00 KM</li>
-                      <li class="">Carburant : Diesel</li>
-                      <li class="">Transmission : Auto/Manuelle</li>
-                      <li class="">Modéle : xx</li>
-                      <li class="">Puissance fiscal : .00 CH</li>
-                      <li class="">Vignette : .00 DHS</li>
-                      <li class="">Vignette d'année en cours : Oui/Non</li>
-                      <li class="">Consomation % : .00 </li>
-                      <li class="">Accidenté : Oui/Non</li>
-                      <li class="">Type de papier de vente : CG|Reçu|Procuration|Dépo</li>
-                    </ul>
-                  </div>
-                </div>
-                <div class="card-footer">
-                    <div class="">Carburant</div>
-                    <i class="material-icons">av_timer</i><div class="">KM</div>
-                    <div class="">.00 CH</div>
-                </div>
-              </div>
+                  {{/each}}
 
+                </script>  
+              </div>
 
             </div>
           
             <!-- Action save video -->
-            <div class="fab fab-extended fab-center-bottom" onclick="openCamera();"style="position: fixed;bottom: 10px; z-index: 10;">
-              <a href="#" class="">
+            <div class="fab fab-extended fab-center-bottom"  style="position: fixed;bottom: 10px; z-index: 10;">
+              <a href="/insertad/" class="">
                 <i class="icon f7-icons ios-only">videocam_round_fill</i>
                 <div class="fab-text">Save</div>
               </a>
@@ -593,100 +508,49 @@
   <!-- Your custom app scripts -->
   <script src="js/app.js"></script>
 
-  <!-- YOUTUBE API -->
-  <script src="https://www.youtube.com/iframe_api"></script>
   
+  <!-- YOUTUBE API -->
+
   <!-- JQUERY  -->
   <script
   src="https://code.jquery.com/jquery-3.3.1.min.js"
   integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
   crossorigin="anonymous"></script>
-  <script src="js/play.js"></script>
+  <script src="js/madeCall.js"></script>
+  <script src="js/camera.js"></script>
 
-
+  <script src='https://vjs.zencdn.net/7.4.1/video.js'></script>
+    
   <script type="text/javascript">
-    // Clicked details
-    $('.clicked-ad').on('click',function(){
-      var panel = $(this).parent().next().next();
-      if(!$(panel).is(':visible')){
-        $(panel).show();
-      }else{
-        $(panel).hide();
-      }
-    });
-    var makeCall = function( to){
-      alert(cordova.plugins);
-      cordova.plugins.CordovaCall.callNumber(to);
-    }
-      // document.addEventListener('deviceready', function() {
+    
+      
+      //onclick show detail
+      $('.clicked-ad').click(function (e) {
+        var panel = $(this).parent().next().next();
+        console.log($(panel));
+        if ($(panel).css('display') == 'none') {
+          $(panel).show();
+        }else{
+          $(panel).hide();
+        }
+      });
+      
+      //wait until the wrapper is ready to display the content of the video and ads
+      $('#videoWrapper').ready(function(){
 
-      //   var permissions = cordova.plugins.permissions;
-      //   permissions.requestPermission(permissions.CAMERA, success, error);
+        $('.video-container').each(function(){
+          if (visibility($(this)) >= 0.5) {
+            //get the children node and the player to trigger event play
+            console.log('visible');        
+          };
+        });
 
-      //   function error() {
-      //     alert('Camera permission is not turned on');
-      //   }
+      });
 
-      //   function success( status ) {
-      //     if( !status.hasPermission ) error();
-      //   }
-      //   alert('cordova.plugins.permissions is now available');
-      // });
-      // // onSuccess Callback
-      // // Camera access and clean 
-      // //
 
-      // // navigator.camera.cleanup(onSuccess, onFail);
 
-      // function onSuccess() {
-      //     console.log("Camera cleanup success.")
-      // }
 
-      // function onFail(message) {
-      //     alert('Failed because: ' + message);
-      // }
-
-      // function openCamera(selection) {
-
-      //     var srcType = Camera.PictureSourceType.CAMERA;
-      //     var options = setOptions(srcType);
-      //     var func = createNewFileEntry;
-
-      //     navigator.camera.getPicture(function cameraSuccess(imageUri) {
-
-      //         displayImage(imageUri);
-      //         // You may choose to copy the picture, save it somewhere, or upload.
-      //         func(imageUri);
-
-      //     }, function cameraError(error) {
-      //         console.debug("Unable to obtain picture: " + error, "app");
-
-      //     }, options);
-      // }      
-      // // onSuccess Callback
-      // // This method accepts a Position object, which contains the
-      // // current GPS coordinates
-      // //
-      // var onSuccess = function(position) {
-      //     console.log('Latitude: '          + position.coords.latitude          + '\n' +
-      //           'Longitude: '         + position.coords.longitude         + '\n' +
-      //           'Altitude: '          + position.coords.altitude          + '\n' +
-      //           'Accuracy: '          + position.coords.accuracy          + '\n' +
-      //           'Altitude Accuracy: ' + position.coords.altitudeAccuracy  + '\n' +
-      //           'Heading: '           + position.coords.heading           + '\n' +
-      //           'Speed: '             + position.coords.speed             + '\n' +
-      //           'Timestamp: '         + position.timestamp                + '\n');
-      // };
-
-      // // onError Callback receives a PositionError object
-      // //
-      // function onError(error) {
-      //     alert('code: '    + error.code    + '\n' +
-      //           'message: ' + error.message + '\n');
-      // }
-
-      // navigator.geolocation.getCurrentPosition(onSuccess, onError);
-
+      navigator.geolocation.getCurrentPosition(onSuccess, onError);
 
   </script>
 </body>

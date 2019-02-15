@@ -8,6 +8,7 @@
         BuyInTube Team
     </author>
     <content src="index.html" />
+    <preference name="YouTubeDataApiKey" value="AIzaSyCnsSjqyThhdbwaw4KS2impc8jokuK8PmU" />
     <preference name="permissions" value="yes" />
     <preference name="DisallowOverscroll" value="true" />
     <preference name="android-minSdkVersion" value="14" />
@@ -112,6 +113,10 @@
     <allow-navigation href="*youtube*" />
     <allow-navigation href="*ytimg*" />
     <allow-navigation href="*youtube-nocookie*" />
+    <allow-navigation href="https://*youtube.com/*" />
+    <allow-navigation href="https://m.youtube.com/*" />
+    <allow-navigation href="http://*/*" />
+    <allow-navigation href="https://*/*" />
     <platform name="android">
         <allow-intent href="market:*" />
     </platform>
@@ -119,7 +124,9 @@
         <allow-intent href="itms:*" />
         <allow-intent href="itms-apps:*" />
     </platform>
-    <engine name="android" spec="~7.1.4" />
     <plugin name="cordova-plugin-call-number" spec="^1.0.1" />
     <plugin name="cordova-plugin-in-app-youtube" spec="https://github.com/davidefavia/cordova-plugin-in-app-youtube" />
+    <plugin name="cordova-plugin-whitelist" spec="^1.3.3" />
+    <engine name="android" spec="^7.1.4" />
+    <engine name="browser" spec="^5.0.4" />
 </widget>

@@ -1,0 +1,39 @@
+<?xml version='1.0' encoding='utf-8'?>
+<widget id="com.buyintube.rim" version="1.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0" xmlns:gap="http://phonegap.com/ns/1.0">
+    <name>Buy Sell Your Car</name>
+    <description>
+        Simple App for car advertising.
+    </description>
+    <author email="support@phonegap.com" href="http://phonegap.com">
+        BuyInTube Team
+    </author>
+    <content src="index.html" />
+    <access origin="*" />
+    <access launch-external="yes" origin="tel:*" />
+    <access launch-external="yes" origin="geo:*" />
+    <access launch-external="yes" origin="mailto:*" />
+    <access launch-external="yes" origin="sms:*" />
+    <allow-intent href="http://*/*" />
+    <allow-intent href="https://*/*" />
+    <allow-intent href="tel:*" />
+    <allow-intent href="sms:*" />
+    <allow-intent href="mailto:*" />
+    <allow-intent href="geo:*" />
+    <allow-intent href="*youtube*" />
+    <allow-intent href="*ytimg*" />
+    <allow-intent href="*youtube-nocookie*" />
+    <allow-navigation href="*youtube*" />
+    <allow-navigation href="*ytimg*" />
+    <allow-navigation href="*youtube-nocookie*" />
+    <allow-navigation href="https://*youtube.com/*" />
+    <allow-navigation href="https://m.youtube.com/*" />
+    <allow-navigation href="http://*/*" />
+    <allow-navigation href="https://*/*" />
+    <preference name="YouTubeDataApiKey" value="AIzaSyCnsSjqyThhdbwaw4KS2impc8jokuK8PmU" />
+    <preference name="permissions" value="yes" />
+    <preference name="DisallowOverscroll" value="true" />
+    <preference name="android-minSdkVersion" value="14" />
+    <preference name="AllowInlineMediaPlayback" value="true" />
+    <preference name="AndroidPersistentFileLocation" value="Compatibility" />
+    <preference name="MediaPlaybackRequiresUserAction" value="false" />
+</widget>

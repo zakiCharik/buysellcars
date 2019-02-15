@@ -67,6 +67,16 @@
             {
               "xml": "<feature name=\"InAppYouTube\"><param name=\"android-package\" value=\"com.davidefavia.InAppYouTube\" /><param name=\"onload\" value=\"true\" /></feature>",
               "count": 1
+            },
+            {
+              "xml": "<feature name=\"Whitelist\"><param name=\"android-package\" value=\"org.apache.cordova.whitelist.WhitelistPlugin\" /><param name=\"onload\" value=\"true\" /></feature>",
+              "count": 1
+            }
+          ],
+          "widget": [
+            {
+              "xml": "<feature name=\"YoutubeVideoPlayer\"><param name=\"android-package\" value=\"com.bunkerpalace.cordova.YoutubeVideoPlayer\" /></feature>",
+              "count": 1
             }
           ]
         }
@@ -127,6 +137,14 @@
             {
               "xml": "<service android:name=\"com.dmarc.cordovacall.MyConnectionService\" android:permission=\"android.permission.BIND_TELECOM_CONNECTION_SERVICE\"><intent-filter><action android:name=\"android.telecom.ConnectionService\" /></intent-filter></service>",
               "count": 1
+            },
+            {
+              "xml": "<activity android:name=\"com.keyes.youtube.OpenYouTubePlayerActivity\" android:screenOrientation=\"landscape\" />",
+              "count": 1
+            },
+            {
+              "xml": "<activity android:configChanges=\"orientation|keyboardHidden|keyboard|screenSize|locale\" android:label=\"@string/activity_name\" android:launchMode=\"singleTop\" android:name=\"com.bunkerpalace.cordova.YouTubeActivity\" android:theme=\"@android:style/Theme.Black.NoTitleBar\" android:windowSoftInputMode=\"adjustResize\" />",
+              "count": 1
             }
           ],
           "application": [
@@ -138,6 +156,10 @@
           "/manifest": [
             {
               "xml": "<uses-permission android:name=\"android.permission.VIBRATE\" />",
+              "count": 1
+            },
+            {
+              "xml": "<uses-permission android:name=\"android.permission.ACCESS_WIFI_STATE\" />",
               "count": 1
             }
           ]
@@ -186,6 +208,12 @@
       "PACKAGE_NAME": "com.buyintube.rim"
     },
     "cordova-plugin-in-app-youtube": {
+      "PACKAGE_NAME": "com.buyintube.rim"
+    },
+    "com.bunkerpalace.cordova.YoutubeVideoPlayer": {
+      "PACKAGE_NAME": "com.buyintube.rim"
+    },
+    "cordova-plugin-whitelist": {
       "PACKAGE_NAME": "com.buyintube.rim"
     }
   },
@@ -585,6 +613,14 @@
         "InAppYouTube"
       ],
       "runs": true
+    },
+    {
+      "id": "com.bunkerpalace.cordova.YoutubeVideoPlayer.YoutubeVideoPlayer",
+      "file": "plugins/com.bunkerpalace.cordova.YoutubeVideoPlayer/plugins/com.bunkerpalace.cordova.YoutubeVideoPlayer/www/YoutubeVideoPlayer.js",
+      "pluginId": "com.bunkerpalace.cordova.YoutubeVideoPlayer",
+      "clobbers": [
+        "YoutubeVideoPlayer"
+      ]
     }
   ],
   "plugin_metadata": {
@@ -601,6 +637,8 @@
     "cordova-plugin-network-information": "1.3.4",
     "cordova-plugin-vibration": "2.1.6",
     "cordova-plugin-call-number": "1.0.1",
-    "cordova-plugin-in-app-youtube": "1.0.0"
+    "cordova-plugin-in-app-youtube": "1.0.0",
+    "com.bunkerpalace.cordova.YoutubeVideoPlayer": "1.0.5",
+    "cordova-plugin-whitelist": "1.3.3"
   }
 }
