@@ -20,7 +20,7 @@ var app  = new Framework7({
     //request the data her
     var annonceArray = [];
 
-    Framework7.request.get('http://localhost:3000/api/v1/', function (data) {
+    Framework7.request.get('http://31.220.55.232:3001/api/v1/', function (data) {
 
       var ads = JSON.parse(data).listCars;
       ads.forEach(function(ad){
@@ -47,7 +47,7 @@ var app  = new Framework7({
       //request the data her
       var annonceArray = [];
 
-      Framework7.request.get('http://localhost:3000/api/v1/', function (data) {
+      Framework7.request.get('http://31.220.55.232:3001/api/v1/', function (data) {
 
         var ads = JSON.parse(data).listCars;
         ads.forEach(function(ad){
@@ -73,12 +73,12 @@ var app  = new Framework7({
       // After the following setup all XHR requests will have additional 'Autorization' header
       Framework7.request.setup({
         headers: {
-          "Access-Control-Allow-Origin": "http://localhost:3000",
+          "Access-Control-Allow-Origin": "http://31.220.55.232:3001/",
           "Content-Type": "text/html"
         }
       });      
       var annonceArray = [];
-      Framework7.request.get('http://localhost:3000/api/v1/', function (data) {
+      Framework7.request.get('http://31.220.55.232:3001/api/v1/', function (data) {
 
         if (document.querySelector('#videoWrapper') !== null && document.querySelector('#videoTemplate') !== null) {
           // for professional search page card details on right hand side
