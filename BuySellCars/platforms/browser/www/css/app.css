@@ -31,3 +31,34 @@
   content: '';
   z-index: 6000;
 }
+/*--------------*/
+.ios .navbar {
+  background: #343a40 !important;
+  color: white !important;
+}
+.ios .subnavbar {
+    background: #464f57;
+}
+.ios .navbar a.icon {
+    color: white !important;
+}
+.ios a {
+    color: #fa9539;
+}
+.segmented .button, .segmented button {
+    color: white !important;
+}
+
+.md .navbar {
+  background: #343a40 !important;
+  color: white !important;
+}
+.md .subnavbar {
+    background: #464f57;
+}
+.md .navbar a.icon {
+    color: white !important;
+}
+.md a {
+    color: #fa9539;
+}
