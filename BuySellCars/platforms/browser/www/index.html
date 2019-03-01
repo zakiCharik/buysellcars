@@ -81,6 +81,11 @@
     .video-js{
       width: 100% !important;
     }
+    .ytp-large-play-button {
+      display: none !important;
+          position: initial !important;
+
+    }
   </style>
   <link rel="stylesheet" href="https://unpkg.com/video.js/dist/video-js.min.css">
   <script src="//unpkg.com/video.js/dist/video.min.js"></script>
@@ -413,19 +418,19 @@
                           </div>
                         </div>
                       </div>
-                      <div class="card-header">
+                      <div class="card-header Yclicked-ad">
                           <div class="chip">
                               <div class="chip-media"><img src="http://lorempixel.com/100/100/people/9/"></div>
                               <div class="chip-label">{{annoncor}}</div>
                           </div>                  
-                        <div class="demo-facebook-name clicked-ad link">{{title}}</div>                
+                        <div class="demo-facebook-name clicked-ad link" onclick="showDetails('dis-{{id}}');">{{title}}</div>                
                       </div>
                       <div class="card-header" style="font-size: 14px; text-align: left;">
                         <i class="material-icons">person_pin_circle</i> <div class="demo-facebook-date">{{emplacement}}</div>
                         <div class="demo-facebook-date">Today 3:47 PM</div>
                         <div class="demo-facebook-name" style="font-size: 17px;font-weight: bold;">{{prix}} DHS</div>
                       </div>
-                      <div class="card-content content-ad" style="display: none;"> 
+                      <div class="card-content content-ad" id="dis-{{id}}" style="display: none;"> 
                         <div class="row">
                           <ul class="">
                             <li class="">Description : {{description}}</li>
@@ -507,18 +512,16 @@
   <script src='https://vjs.zencdn.net/7.4.1/video.js'></script>
     
   <script type="text/javascript">
-    
-      
-      //onclick show detail
-      $('.clicked-ad').click(function (e) {
-        var panel = $(this).parent().next().next();
+      var showDetails = function(id){
+        var panel = $('#'+id);
         console.log($(panel));
         if ($(panel).css('display') == 'none') {
           $(panel).show();
         }else{
           $(panel).hide();
-        }
-      });
+        }        
+      };   
+      
       
       //wait until the wrapper is ready to display the content of the video and ads
       $('#videoWrapper').ready(function(){

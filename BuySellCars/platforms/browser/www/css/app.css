@@ -45,10 +45,15 @@
 .ios a {
     color: #fa9539;
 }
-.segmented .button, .segmented button {
-    color: white !important;
+.ios .clicked-ad {
+    z-index: 9999 !important;
 }
 
+
+
+.md .clicked-ad {
+    z-index: 9999 !important;
+}
 .md .navbar {
   background: #343a40 !important;
   color: white !important;
@@ -61,4 +66,12 @@
 }
 .md a {
     color: #fa9539;
+}
+
+
+
+/**/
+
+.segmented .button, .segmented button {
+    color: white !important;
 }
